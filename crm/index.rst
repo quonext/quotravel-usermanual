@@ -12,34 +12,24 @@ La parte relativa a facturación y pagos la encontraremos en el área financiera
 
 
 ********
-Partners
+Agencias
 ********
 
-En QuoTravel los partners pueden ser agencias o proveedores.
+En QuoTravel una agencia es el que nos hace reservas.
 
-Un mismo partner puede actuar como agencia (nos manda reservas) y como proveedor (le mandamos servicios).
-
-
-
-Para cada partner podemos proporcionar los siguientes datos:
+Para cada agencia podemos proporcionar los siguientes datos:
 
 Nombre
-  El nombre con el que identificamos a este partner.
+  El nombre con el que identificamos a esta agencia.
 
 Estado
-  Un partner puede estar en un de los siguientes estados:
+  Una agencia puede estar en un de los siguientes estados:
 
   ================  =====================================
   Activo            La agencia puede hacer reservas
   Inactivo          La agencia no puede hacer reservas
   Crédito excedido  Ha superado alguno de los límites de crédito. No puede hacer reservas
   ================  =====================================
-
-Es agencia
-  Lo marcamos si es una agencia. Esto lo utilizamos más adelante en algunos campos cuando queremos seleccionar una agencia, para saber que partners lo son.
-
-Es proveedor
-  Lo marcamos si es una proveedor. Esto lo utilizamos más adelante en algunos campos cuando queremos seleccionar un proveedor, para saber que partners lo son.
 
 Grupo
   Aquí podemos indicar el grupo de partners al que pertenece, si es el caso. Se utiliza luego en los contratos o en los markups, cuando indicamos que un contrato o markup es válido para un grupo de agencias.
@@ -48,8 +38,8 @@ Central
   Aquí podemos indicar que partner es la central de este partner, cuando es una sucursal. Luego se utilizan los markups de la central para todas las sucursales.
 
 Mercado
-  Cada agencia está ligada a un mercado. El mercado se utiliza para segmentar el producto.
-  Si un cliente trabaja con varios mercados habrá que crear tantos partners como mercados con los que trabaja.
+  Cada agencia está ligada a un mercado por defecto. El mercado se utiliza para segmentar el producto.
+  No obstante, veremos que a la hora de realizar una reserva podemos indicar cualquier mercado, para cualquier agencia.
 
 Moneda
   Para cada agencia debemos indicar con que moneda quiere las reservas. En el caso de que una agencia acepte trabajar con las divisas de compra dejaremos el campo en blanco.
@@ -84,11 +74,58 @@ Margen
 Handling fee
   Aquí indicamos las reglas de hangling fee que hay que aplicar a las reservas realizadas por esta agencia.
 
-Pagadero por
-  Lo que pongamos en este campo aparecerá en los vouchers de los servicios proveidos por este partner.
-
 Condiciones de cancelación
   Aquí indicamos las condiciones de cancelación que aplican a esta agencia.
+
+Integraciones de terceros
+  Aquí podemos indicar que integraciones de compra son accesibles para esta agencia.
+  Si no indicamos ninguna todas las integraciones son accesibles, a no ser que hayamos indicado expresamente que no quiere productos de terceros, como hemos visto en el campo *Acepta prodcto de terceros*.
+
+******************
+Grupos de agencias
+******************
+
+Los grupos de agencias los utilizamos para segmentar el producto.
+
+Así, en los contratos podemos indicar si ese producto es visible para un grupo de agencias en lugar de ir agencia por agencia.
+
+
+***********
+Proveedores
+***********
+
+En QuoTravel las reservas las enviamos a proveedores, que es quien después nos enviará facturas por sus servicios.
+
+Para cada proveedor podemos proporcionar los siguientes datos:
+
+Nombre
+  El nombre con el que identificamos a este proveedores.
+
+Estado
+  Un proveedor puede estar en un de los siguientes estados:
+
+  ================  =====================================
+  Activo            La agencia puede hacer reservas
+  Inactivo          La agencia no puede hacer reservas
+  ================  =====================================
+
+Moneda
+  Para cada agencia debemos indicar con que moneda quiere las reservas. En el caso de que una agencia acepte trabajar con las divisas de compra dejaremos el campo en blanco.
+
+Agente financiero
+  Aquí indicamos los datos de facturación de un cliente. Al separar la parte operativa de la parte de facturación de las agencias y proveedores nos permite tener una balanza de pagos, compartir los datos de facturación entre diferentes agencias, etc.
+
+Email
+  Aquí indicamos el email de la agencia o proveedor. Lo utilizamos para mandarle llos vouchers y otras comunicaciones.
+
+Comentarios
+  Este es un campo para poner nuestros comentarios. Es un campo para uso interno nuestro.
+
+Pagadero por
+  Lo que pongamos en este campo aparecerá en los vouchers de los servicios proveidos por este proveedor.
+
+Condiciones de cancelación
+  Aquí indicamos las condiciones de cancelación que aplican a este proveedor.
 
 Método de envío de pedidos
   Aquí indicamos como enviar los servicios a este proveedor.
@@ -101,19 +138,6 @@ Envío automático de pedidos
 
 Confirmación automática de pedidos
   Si lo marcamos los servicios se marcarán automáticamente como confirmados en cuanto se envíen.
-
-Integraciones de terceros
-  Aquí podemos indicar que integraciones de compra son accesibles para esta agencia.
-  Si no indicamos ninguna todas las integraciones son accesibles, a no ser que hayamos indicado expresamente que no quiere productos de terceros, como hemos visto en el campo *Acepta prodcto de terceros*.
-
-
-******************
-Grupos de partners
-******************
-
-Los grupos de partners los utilizamos para segmentar el producto.
-
-Así, en los contratos podemos indicar si ese producto es visible para un grupo de agencias en lugar de ir agencia por agencia.
 
 
 ********

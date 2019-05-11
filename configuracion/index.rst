@@ -46,7 +46,7 @@ Para cada divisa deberemos proporcionar su código iso de 3 letras y su código 
 
 En cada factura se guarda siempre el importe en la divisa de la misma, y también se guarda su contravalor en la divisa contable de la empresa.
 
-En las líneas de cargo y en las reservas se guarda también el contravalor en la divisa de la oficina y en la divisa de la empresa.
+En las líneas de cargo y en las reservas se guarda también el contravalor en la divisa de la empresa.
 
 Aquí tenemos algunos ejemplos de códigos ISO de divisas:
 
@@ -66,7 +66,7 @@ Crear los impuestos
 
 En este momento nos conviene crear los impuestos de valor añadido que nos afectan (IVA, IGIC).
 
-Para ello iremos a Finnancials --> VAT y los crearemos.
+Para ello iremos a Finnancials --> More --> VAT y los crearemos.
 
 De momento es suficiente darles un nombre.
 
@@ -74,15 +74,15 @@ De momento es suficiente darles un nombre.
 Crear el mapa geográfico
 ========================
 
-El siguiente paso consiste en crear al menos una zona en la que ubicar nuestra primera oficina.
+El siguiente paso consiste en crear al menos un resort (equivalente a ciudad o zoma) en la que ubicar nuestra primera oficina.
 
-Para ello deberemos crear un país, un destino y una zona.
+Para ello deberemos crear un país, un destino y un resort.
 
 En el caso del país conviene utilizar el código ISO.
 
-En el caso de la zona podemos proporcionar, además del nombre, una lista de alias (nombres por los que también es conocida la localidad). Los alias los utilizamos depués en las búsquedas de disponibilidad.
+En el caso del resort podemos proporcionar, además del nombre, una lista de alias (nombres por los que también es conocida la localidad). Los alias los utilizamos depués en las búsquedas de disponibilidad.
 
-Cuando creamos el mapa geográfico podemos crear también áreas. Una área es una lista de zonas que queremos agrupar bajo un mismo nombre, con vistas a utilizarlos después en las consultas de disponibilidad.
+Cuando creamos el mapa geográfico podemos crear también áreas. Una área es una lista de resorts que queremos agrupar bajo un mismo nombre, con vistas a utilizarlos después en las consultas de disponibilidad.
 
 En el país debemos incluir esta información relativa a la gestión de traslados:
 
@@ -101,14 +101,6 @@ Minutos para vuelos internacionales
   Si es un aeropuerto, el nº de minutos que necesitan para facturar y pasar los controles para vuelos internacionales.
 
   Esto es, nº de minutos que tienen que estar en el aeropuerto, antes de la hora de salida del vuelo.
-
-
-Crear la contabilidad
-=====================
-
-Hay que crear una contabilidad para cada una de las empresas que definiremos más adelante.
-
-Para cada contabilidad debemosindicar un nombre y una divisa, que no podremos modificar más adelante.
 
 
 Crear las empresas
@@ -157,9 +149,11 @@ Datos del servidor de email
 Crear una clave de facturación
 ==============================
 
-Para poder facturar necesitamos asociar lo que facturamos a lo que llamamos clave de facturación.
+Para poder facturar necesitamos asociar lo que facturamos a lo que llamamos clave de facturación (un equivalente a lo que en Microsoft Bussiness Central encontraremos como Grupos de Iva).
 
 La clave de facturación, aparte de servirnos para generar informes y para agrupar los importes de una reserva o factura, nos proporciona la información necesaria para la correcta aplicación del IVA.
+
+Para ello iremos a Finnancials --> More --> Billing concepts.
 
 Así, para cada clave de facturación deberemos indicar:
 
@@ -186,7 +180,7 @@ Para poder crear creservas necesitamos asociarlas a un mercado.
 En base al mercado sabemos luego que precios podemos aplicar a una reserva. Es pues un campo obligatorio de la reserva.
 
 
-Para crear los mercados debemos utilizar la opción CRM --> Markets.
+Para crear los mercados debemos utilizar la opción Biz --> Markets.
 
 
 Para cada mercado debemos indicar únicamente un nombre.
