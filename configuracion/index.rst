@@ -60,6 +60,10 @@ RUB       643
 
 En el capítulo dedicado al cambio de divisas veremos que el sistema recoge el cambio automáticamente cada día desde el BCE.
 
+IMPORTANTE
+
+  En este momento deberíamos ir a la configuración general del sistema e indicar la divisa contable. Una vez que hayamos creado reservas ya no podremos cambiarla!
+
 
 Crear los impuestos
 ===================
