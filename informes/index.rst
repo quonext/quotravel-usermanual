@@ -8,23 +8,6 @@ Recordar que también pueden bajarse una copia de la base de datos para explotar
 
 
 *********
-DashBoard
-*********
-
-En este panel de control incluimos en una sola pantalla y de manera muy visual:
-
-- Reservas hoy
-- Margen hoy
-- Riesgo total (deuda clientes)
-- Deuda total proveedores
-- Gráfico reservas último año
-- Gráfico reservas por oficina
-- Gráfico reservas por agencia
-- Gráfico cobertura garantías
-- Gráfico comparativo ventas últimos años
-
-
-*********
 Situación
 *********
 
