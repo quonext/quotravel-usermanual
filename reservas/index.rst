@@ -13,7 +13,7 @@ No entra en este capítulo la gestión operativa de los servicios, que veremos e
 Grupos
 ******
 
-En este capítulo vemos la gestión de las peticiones de cotización.
+En este capítulo vemos la gestión de las peticiones de cotización para grupos.
 
 Las peticiones de cotización pueden ser de entrada o de salida. Esto es, puede ser que una agencia nos esté pidiendo una cotización para un servicio (normalmente un grupo) o que nosotros le estemos pidiendo un precio a un proveedor.
 
@@ -27,7 +27,9 @@ Al final, si se aprueba, el presupuesto se relaciona con la reserva y podemos ir
 Tipos de grupos
 ===============
 
+Es un dato que sirve únicamente a nivel estadístico.
 
+Para cada tipo de grupo indicaremos simplemente un nombre.
 
 
 Solicitud de cotización
@@ -152,7 +154,7 @@ Cada cambio de la reserva en el client se refleja en nuestra reserva en QuoTrave
 
 Si es necesario, se envía la confirmación al cliente cuando el servicio es confirmado, pero eso ya forma parte de la operativa habitual de las reservas.
 
-Actualmente en QuoTravel están funcionando sin incidencias la integración de reservas de traslados de Travelrepublic y de ShuttleDirect.
+Actualmente en QuoTravel están funcionando sin incidencias la integración de reservas de traslados de Travelrepublic, Traveltino y de ShuttleDirect.
 
 
 

@@ -55,20 +55,6 @@ La extranet para proveedores permite
 - Respuesta cotizaciones
 
 
-***********************
-Extranet representantes
-***********************
-
-La extranet para representantes permite
-
-- realizar reservas (que se imputarán al representante en cuestión)
-- consultar y anular tickets
-- imprimir bonos (también con impresora portátil, desde el movil)
-- consultar liquidación pendiente
-- consultar liquidaciones anteriores
-
-Al confirmar las reservas se pueden indicar las formas de pago utilizadas, y dicha información aparece después reflejada en la liquidación.
-
 
 *******************
 Extranet aeropuerto
