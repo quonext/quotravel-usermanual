@@ -9,9 +9,9 @@ Desde la prereserva (gestión de presupuestos), hasta la confirmación de horari
 No entra en este capítulo la gestión operativa de los servicios, que veremos en otro capítulo más adelante.
 
 
-*************************
-Solicitudes de cotización
-*************************
+******
+Grupos
+******
 
 En este capítulo vemos la gestión de las peticiones de cotización.
 
@@ -22,6 +22,12 @@ De hecho, una petición de una agencia puede generar varias peticiones a proveed
 Es un trabajo muy manual, y consiste básicamente en el seguimiento de los correos que se van intercambiando, en el registro de anotaciones, y en el control de las fechas para recordarnos que debemos realizar alguna acción relacionada con el presupuesto.
 
 Al final, si se aprueba, el presupuesto se relaciona con la reserva y podemos ir de un lado a otro.
+
+
+Tipos de grupos
+===============
+
+
 
 
 Solicitud de cotización
