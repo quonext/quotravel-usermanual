@@ -6,6 +6,10 @@ Aquí explicaremos toda la parte relacionada con los informes.
 
 Recordar que también pueden bajarse una copia de la base de datos para explotarla con los informes que quieran.
 
+Al comenzar el proyecto decidimos hacer un reset de los informes e irlos creando a medida que los usuarios de QUoTravel fuesen solicitando su inclusión.
+
+A continuación se enumeran los informes disponibles actualmente, pero es un capítulo que irá creciendo con el tiempo.
+
 
 *********
 Situación
