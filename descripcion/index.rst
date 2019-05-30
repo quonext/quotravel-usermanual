@@ -10,7 +10,7 @@ QuoTravel es un sistema que cubre toda la operativa de una agencia de viajes rec
 
 Abarca desde la web la entrada de reservas via web, xml o procesos de importación hasta la exportación a contabilidad, pasando por la emisión de facturas, la validación de facturas de proveedores, o la gestión de cobros y pagos.
 
-También nos proporciona el soporte para la gestión de grupos, pasarelas de pago, gestión de llegadas en aeropuerto o accesos específicos para agencias y proveedores, entre otras cosas.
+También nos proporciona el soporte para la gestión de grupos, pasarelas de pago, gestión de llegadas en aeropuerto, accesos específicos para agencias y proveedores o apps para venta de excursiones y validación de tickets, entre otras cosas.
 
 En resúmen, soporta toda la operativa de nuestra agencia.
 

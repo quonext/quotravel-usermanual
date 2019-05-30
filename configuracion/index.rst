@@ -190,6 +190,19 @@ Para crear los mercados debemos utilizar la opción Biz --> Markets.
 Para cada mercado debemos indicar únicamente un nombre.
 
 
+Crear una tarifa
+================
+
+Para poder crear creservas necesitamos asociarlas a una tarifa.
+
+En base ala tarifa sabemos luego que precios podemos aplicar a una reserva. Es pues un campo obligatorio de la reserva.
+
+
+Para crear los mercados debemos utilizar la opción Portfolio --> Tariffs.
+
+
+Para cada tarifa debemos indicar únicamente un nombre.
+
 
 Crear un punto de venta
 =======================
@@ -208,12 +221,12 @@ Solo necesitamos darle un nombre, y aparecerá después en la reserva y en algun
 Gestión de usuarios
 *******************
 
-En QuoTravel podemos crear tantos usuarios como necesitemos, y asignar a cada uno diferentes roles o darle acceso únicamente a una oficina, como agencia o como proveedor.
+En QuoTravel podemos crear tantos usuarios como necesitemos. Tenemos diferentes tipos de usuarios (usuario QuoTravle, usuario agencia, usuario proveedor, ...) que podemos utilizar en función de que rol queremos asignar a ese usuario.
 
 Crear usuarios
 ==============
 
-Para crear un usuario basta ir al mantenimiento de usuarios, en *Admin* --> *Users*, y utilizar la opción *New*.
+Para crear un usuario basta ir al mantenimiento de usuarios, en *Admin* --> *Auth*, y utilizar la opción *New* en cualquiera de los tipos de usuarios que hay disponibles.
 
 Para el nuevo usuario podemos indicar:
 
