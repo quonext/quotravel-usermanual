@@ -90,55 +90,6 @@ Los grupos de agencias los utilizamos para segmentar el producto.
 Así, en los contratos podemos indicar si ese producto es visible para un grupo de agencias en lugar de ir agencia por agencia.
 
 
-***********
-Proveedores
-***********
-
-En QuoTravel las reservas las enviamos a proveedores, que es quien después nos enviará facturas por sus servicios.
-
-Para cada proveedor podemos proporcionar los siguientes datos:
-
-Nombre
-  El nombre con el que identificamos a este proveedores.
-
-Estado
-  Un proveedor puede estar en un de los siguientes estados:
-
-  ================  =====================================
-  Activo            La agencia puede hacer reservas
-  Inactivo          La agencia no puede hacer reservas
-  ================  =====================================
-
-Moneda
-  Para cada agencia debemos indicar con que moneda quiere las reservas. En el caso de que una agencia acepte trabajar con las divisas de compra dejaremos el campo en blanco.
-
-Agente financiero
-  Aquí indicamos los datos de facturación de un cliente. Al separar la parte operativa de la parte de facturación de las agencias y proveedores nos permite tener una balanza de pagos, compartir los datos de facturación entre diferentes agencias, etc.
-
-Email
-  Aquí indicamos el email de la agencia o proveedor. Lo utilizamos para mandarle llos vouchers y otras comunicaciones.
-
-Comentarios
-  Este es un campo para poner nuestros comentarios. Es un campo para uso interno nuestro.
-
-Pagadero por
-  Lo que pongamos en este campo aparecerá en los vouchers de los servicios proveidos por este proveedor.
-
-Condiciones de cancelación
-  Aquí indicamos las condiciones de cancelación que aplican a este proveedor.
-
-Método de envío de pedidos
-  Aquí indicamos como enviar los servicios a este proveedor.
-
-Dirección de envío de pedidos
-  Aquí indicamos a que emails deben envarse los pedidos de compra
-
-Envío automático de pedidos
-  Si lo marcamos los pedidos se enviarán automáticamente en cuanto se creen.
-
-Confirmación automática de pedidos
-  Si lo marcamos los servicios se marcarán automáticamente como confirmados en cuanto se envíen.
-
 
 ********
 Mercados
@@ -151,6 +102,7 @@ Cada agencia pertenece a un mercado y recibe los precios de los contratos que he
 Crearemos por ejemplo mercado británico, alemán, nacional, ...
 
 No hay que confundirlo con el concepto de nacionalidad.
+
 
 
 ******************
@@ -508,6 +460,69 @@ Líneas
     - Las más baratas
     - Las más caras
     - Precio medio
+
+
+***********
+Proveedores
+***********
+
+En QuoTravel las reservas las enviamos a proveedores, que es quien después nos enviará facturas por sus servicios.
+
+Para cada proveedor podemos proporcionar los siguientes datos:
+
+Nombre
+  El nombre con el que identificamos a este proveedores.
+
+Estado
+  Un proveedor puede estar en un de los siguientes estados:
+
+  ================  =====================================
+  Activo            La agencia puede hacer reservas
+  Inactivo          La agencia no puede hacer reservas
+  ================  =====================================
+
+Moneda
+  Para cada agencia debemos indicar con que moneda quiere las reservas. En el caso de que una agencia acepte trabajar con las divisas de compra dejaremos el campo en blanco.
+
+Agente financiero
+  Aquí indicamos los datos de facturación de un cliente. Al separar la parte operativa de la parte de facturación de las agencias y proveedores nos permite tener una balanza de pagos, compartir los datos de facturación entre diferentes agencias, etc.
+
+Email
+  Aquí indicamos el email de la agencia o proveedor. Lo utilizamos para mandarle llos vouchers y otras comunicaciones.
+
+Comentarios
+  Este es un campo para poner nuestros comentarios. Es un campo para uso interno nuestro.
+
+Pagadero por
+  Lo que pongamos en este campo aparecerá en los vouchers de los servicios proveidos por este proveedor.
+
+Condiciones de cancelación
+  Aquí indicamos las condiciones de cancelación que aplican a este proveedor.
+
+Método de envío de pedidos
+  Aquí indicamos como enviar los servicios a este proveedor.
+
+Dirección de envío de pedidos
+  Aquí indicamos a que emails deben envarse los pedidos de compra
+
+Envío automático de pedidos
+  Si lo marcamos los pedidos se enviarán automáticamente en cuanto se creen.
+
+Confirmación automática de pedidos
+  Si lo marcamos los servicios se marcarán automáticamente como confirmados en cuanto se envíen.
+
+
+******************************
+Comisionistas (representantes)
+******************************
+
+En QuoTravel podemos definir comisionistas que son, básicamente, agentes que se llevan una comisión sobre una venta.
+
+Para cada comisionista definiremos un nombre, su estado, y que agente finiero (datos de facturación) están relacionados con él.
+
+También podemos indicar un reparto de comisiones. Esto es, si una parte de susu comisiones debe imputarse a otro agente de comisión. Es el caso por ejemplo de la guía que debe repartir sus comisiones con la recepción del hotel en el que ha hecho la venta.
+
+
 
 
 **********
