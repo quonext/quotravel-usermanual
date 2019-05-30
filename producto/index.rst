@@ -274,6 +274,19 @@ Imágenes
 Características
   Valores que damos a cada una de las caraterísticas de nuestro producto, según las hayamos definido previamente.
 
+Grupos de claúsulas
+-------------------------
+
+Los grupos de clúsulas nos permiten agrupar un conjunto de claúsulas para añadirlas en grupo a un contrato.
+
+Para cada grupo indicamos simplemente un nombre.
+
+Claúsulas
+---------
+
+En Quotravel podemos definir las claúsulas que necesitemos para incluirlas después en nuestros contratos, de manera que aparecerán después en la última página del pdf del contrato.
+
+Una claúsula esta compuesta por un nombre y un orden.
 
 Disponiblidad
 =============
@@ -1037,18 +1050,7 @@ Los contratos de traslados están formados por una cabecera y una lista de preci
 
 La cabecera del contrato de traslado tiene todos los campos comunes a todos los contratos.
 
-Solo añade:
-
-- Un campo para indicar el mínimo de pax por reserva, que es lo mínimo que vamos a cobrar cuando los precios están indicados por pax.
-- Una marca para indicar si el transfer puede ser compartido, en el caso de traslados de INCOMING. Este campo afecta al cálculo de precios ya que se tiene en cuenta la ocupación real del vehículo, no la de cada touroperador por separado. Los touroperadores que podemos mezclar son los que figuran en los filtros de
-- Precio bultos (bicis, palos de golf)
-
-También podemos indicar si el precio es por pasaje (depende del nº de pax del vuelo).
-
-También podemos indicar que hay que pagar el vehículo completo. Esto es, pagamos en base a la capacidad del vehículo solicitado, no en base los pax de la reserva.
-
->>>>>> Esto no es precio por vehículo???
-
+Solo añade un campo para indicar el mínimo de pax por reserva, que es lo mínimo que vamos a cobrar cuando los precios están indicados por pax, y un campo para indicar un release.
 
 
 
@@ -1141,7 +1143,6 @@ Los tours (circuitos y excursiones) tienen 3 partes diferenciadas:
 - entrega de los clientes
 
 
->>>>>>>>>>> NOTA: considerar llamarlo paquetes en lugar de tours !!!!!. Ojo: una excursión o circuito necesiat una gestión que un paquete vuelo + hotel no necesita.
 
 Excursión / Circuito
 ====================
@@ -1342,12 +1343,50 @@ Sustituye al precio
   Acción. Si lo marcamos no se aplica en forma de suplemento, sino que sustituye al precio de la excursión una vez aplicado el suplemento de zona?
 
 
-Pendiente
-=========
+********************
+Producto de terceros
+********************
 
-Temas pendientes de paquetes:
+En QuoTravel podemos integrar producto de terceros.
 
-- Separar excursiones y circuitos
-- Seguramente, volver a dejar el mantenimiento de suplementos y ofertas en mantenimientos separados. Esperamos a ver como queda y decidimos
+De momento soportamos integraciones para la compra de camas de hotel.
 
 
+Integraciones
+=============
+
+En este mantenimiento podemos crear todas las integraciones de compra que deseemos.
+
+Para cada integración podemos definir:
+
+Nombre
+  Nombre de la integración, para identificarla después en listados, etc.
+
+Línea de producto
+  Para segmentar y para saber que markup aplicar a este producto.
+
+Oficina
+  Todas las reservas hechas a través de esta integración se asignarán a esta oficina.
+
+URL base
+  Url del traductor (o del tercero, si utiliza Easytravelapi)
+
+Activa
+  Para indicar si la integración está activa.
+
+Provee hoteles
+  Para inidicar si a través de esta integración podemos comprar hoteles.
+
+Máx hoteles por petición
+  Lo utilizamos para dividir y paralelizar las peticiones de disponibilidad. Su valor dependerá de cada proveedor.
+
+
+
+Mapeados
+========
+
+En este mantenimiento podemos gestionar los mapeados que utilizamos en una integración.
+
+Si no indicamos nigún mapeado el producto de este proveedor se mezclará con el resto de productos sumándose.
+
+Si indicamos mapeados entonces el producto se integrará de una manera más inteligente, evitando duplicados.
