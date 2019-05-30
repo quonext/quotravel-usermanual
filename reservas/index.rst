@@ -15,14 +15,6 @@ Grupos
 
 En este capítulo vemos la gestión de las peticiones de cotización para grupos.
 
-Las peticiones de cotización pueden ser de entrada o de salida. Esto es, puede ser que una agencia nos esté pidiendo una cotización para un servicio (normalmente un grupo) o que nosotros le estemos pidiendo un precio a un proveedor.
-
-De hecho, una petición de una agencia puede generar varias peticiones a proveedores.
-
-Es un trabajo muy manual, y consiste básicamente en el seguimiento de los correos que se van intercambiando, en el registro de anotaciones, y en el control de las fechas para recordarnos que debemos realizar alguna acción relacionada con el presupuesto.
-
-Al final, si se aprueba, el presupuesto se relaciona con la reserva y podemos ir de un lado a otro.
-
 
 Tipos de grupos
 ===============
@@ -37,81 +29,68 @@ Solicitud de cotización
 
 Para cada solicitud de cotización de un grupo podemos tenemos los siguientes campos:
 
-Petición
-  Aquí vemos los campos relacionados con la petición
+Auditoría
+  Quien y cuando ha creado esta petición, y quien y cuando ha hecho la última modificación
 
-  Auditoría
-    Quien y cuando ha creado esta petición, y quien y cuando ha hecho la última modificación
+Agencia
+  Agencia que hace la petición.
 
-  Reserva
-    Con que reserva está relacionada esta solicitud. Puede ser una reserva ya existente, o la reserva que se crea cuando se confirma la solicitud de la agencia.
+Punto de venta
+  Punto de venta relacionado con este presupuesto
 
-  Peticiones relacionadas
-    Si es una petición que hacemos a un proveedor, relacionada con una petición de una agencia
+Título
+  Título del presupuesto, para identificarlo
 
-  Dirección
-    INGOING o OUTGOING, dependiendo de si es una solicitud que nos hace un cliente o de si la hacemos nosotros a un proveedor
+Tipo de grupo
+  Tipo de este grupo. Para utilizarlo después en informes
 
-  Partner
-    La agencia que nos hace la petición, o el proveedor al que se la hacemos
+Divisa
+  Moneda en que están expresados los precios en este presupuesto
 
-  Fecha de caducidad
-    Al llegar a esta fecha recibimos un email. Luego podemos
+Hoteles
+   Servicios de hotel incluidos en este presupuesto
 
-  Acciones pendientes
-    Este texto libre se incluye en los emails recordatorios.
+Traslados
+   Servicios de traslado incluidos en este presupuesto
 
-  Comentarios internos
-    Texto libre para uso interno
+Excursiones
+  Excursiones incluidas en este presupuesto
 
-  Calculadora
-    Texto que se interpreta para calcular el precio
+Genéricos
+  Servicios genéricos incluidos en este presupuesto
 
-  Precio
-    Total que informamos al cliente o la valoración del proveedor
+Líneas
+  Líneas de texto libre incluídas en este presupuesto
 
-  Moneda
-    Moneda en que está expresado el importe
+Fecha
+  Fecha del presupuesto
 
-  Texto
-    Texto de la solicitud
+Fecha de opción
+  Fecha de fín de validez del presupuesto
 
-  Ficheros adjuntos
-    Ficheros que decidimos adjuntar a la solicituda de cotización
+Texto
+  Texto de la solicitud
 
-Respuesta
-  Campos relacionados con nuestra respuesta o con la del proveedor
+Comentariso privados
+  Comentarios para uso interno
 
-  Respuesta
-    Puede tener uno de lso siguientes valores:
+Nombre contacto
+  Nombre del contacto
 
-    - Pendiente
-    - Contestada
-    - Necesita más tiempo
-    - Aceptada
-    - Rechazada
+Email
+  Email del contacto
 
-  Fecha y hora de lectura
-    Fecha y hora de lectura
+Teléfono
+  Teléfono de contacto
 
-  Lector
-    Quien la ha leido
+Comentarios
+  Histórico de comentarios adscritos a este presupuesto
 
-  Fecha y hora de la respuesta
-    Fecha y hora de la respuesta
+Pagos
+  Prepagos relacionados con este presupuesto
 
-  Texto respuesta
-    Texto de la respuesta
-
-
-Log
----
-
-Para cada petición registramos tanto comentarios que metemos desde QuoTravel como emails que decidimos adjuntar.
-
-Para cada uno guardamos la fecha, el usuario y el texto o contenido.
-
-En el caso de ser un email podemos reenviárnoslo a la cuenta que indiquemos.
+Tareas
+  Envíos relacionados con este presupuesto
 
 
 Integración con el email
@@ -122,39 +101,6 @@ Desde la misma petición de contización podemos enviar emails que quedan autom�
 Las respuestas a nuestros emails quedan automáticamente ligadas a la solicitud, y recibimos un email con la respuesta original.
 
 También podemos adjuntar cualquier email a una solicitud de cotización reenviádolo a xxx@yyy.zz con el texto [QUOTRQ-<id de la solicitud>] en el asunto.
-
-
-Envío de cotizaciones contectadas a confirmación
-================================================
-
-Cuanod somos nosotros los que enviamos una solicitud de precio a un proveedor, dicha solicitud contiene un link a una página en la que el proveedor puede indicarnos su respuesta.
-
-Automáticamente nosostros recibimos un email para avisarnos de que el proveedor ha contestado.
-
-El proveedor también puede conultar y responder a las solicitudes de precio desde la extranet.
-
-
-
-***********************
-Importación de reservas
-***********************
-
-La importación de reservas de clientes es un componente clave en QuoTravel.
-
-Lo es especialmente en la parte de traslados, en la que el volúmen de reservas es tan grande que sería inviable intruducir y mantener las reservas manualmente.
-
-La importación de reservas normalmente precisa de web scraping, conectarnos al servidor de correo para leer los correos que nos ha mandado la agencia, etc. Cada agencia es diferente pero lo bueno es que, con QuoTravel, basta desarrollar un pequeño módulo para importar las reservas de una nueva agencia.
-
-
-QuoTravel va integrando las reservas tal cual nos las proporciona el proveedor, con la frecuencia que deseemos.
-
-Esas reservas del cliente se transforman en las correspondidentes reservas dentro de QuoTravel.
-
-Cada cambio de la reserva en el client se refleja en nuestra reserva en QuoTravel y, si es necesario avisa de que es necesario realizar alguna acción como volver a organizar el servicio, o volver a mandar la reserva al proveedor.
-
-Si es necesario, se envía la confirmación al cliente cuando el servicio es confirmado, pero eso ya forma parte de la operativa habitual de las reservas.
-
-Actualmente en QuoTravel están funcionando sin incidencias la integración de reservas de traslados de Travelrepublic, Traveltino y de ShuttleDirect.
 
 
 
@@ -994,4 +940,28 @@ Las consultas disponibles son:
 - Excursiones
 - Circuitos
 - Pax en destino
+
+
+
+***********************
+Importación de reservas
+***********************
+
+La importación de reservas de clientes es un componente clave en QuoTravel.
+
+Lo es especialmente en la parte de traslados, en la que el volúmen de reservas es tan grande que sería inviable intruducir y mantener las reservas manualmente.
+
+La importación de reservas normalmente precisa de web scraping, conectarnos al servidor de correo para leer los correos que nos ha mandado la agencia, etc. Cada agencia es diferente pero lo bueno es que, con QuoTravel, basta desarrollar un pequeño módulo para importar las reservas de una nueva agencia.
+
+
+QuoTravel va integrando las reservas tal cual nos las proporciona el proveedor, con la frecuencia que deseemos.
+
+Esas reservas del cliente se transforman en las correspondidentes reservas dentro de QuoTravel.
+
+Cada cambio de la reserva en el client se refleja en nuestra reserva en QuoTravel y, si es necesario avisa de que es necesario realizar alguna acción como volver a organizar el servicio, o volver a mandar la reserva al proveedor.
+
+Si es necesario, se envía la confirmación al cliente cuando el servicio es confirmado, pero eso ya forma parte de la operativa habitual de las reservas.
+
+Actualmente en QuoTravel están funcionando sin incidencias la integración de reservas de traslados de Travelrepublic, Traveltino y de ShuttleDirect.
+
 
