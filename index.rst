@@ -36,11 +36,7 @@ Bienvenido al manual de usuario de QuoTravel
 
    informes/index.rst
 
-   direccion/index.rst
-
    extension/index.rst
-
-   interno/index.rst
 
 
 
