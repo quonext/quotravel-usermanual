@@ -6,7 +6,7 @@ Aquí explicaremos toda la parte relacionada con la entrada y la gestión de las
 
 Desde la prereserva (gestión de presupuestos), hasta la confirmación de horarios de recogida de los traslados.
 
-No entra en este capítulo la gestión operativa de los servicios, que veremos en otro capítulo más adelante.
+No entra en este capítulo la gestión operativa de los servicios (lo que viene a ser la compra), que veremos en otro capítulo más adelante.
 
 
 ******
@@ -22,6 +22,8 @@ Tipos de grupos
 Es un dato que sirve únicamente a nivel estadístico.
 
 Para cada tipo de grupo indicaremos simplemente un nombre.
+
+Alguos ejemplos pueden ser *Fútbol*, *Imserso*, *Voleibol*, ...
 
 
 Solicitud de cotización
@@ -108,7 +110,7 @@ También podemos adjuntar cualquier email a una solicitud de cotización reenvi�
 Reservas
 ********
 
-En este apartado revisaremos la reserva y su operativa.
+En este apartado revisaremos la reserva, tanto en su forma individual como en su forma agrupada (expediente).
 
 
 Modelo de datos
@@ -118,13 +120,22 @@ Para entender la reserva vamos a repasar un momento como es el modelo de datos q
 
 En QuoTravel las entidades que conforman la reserva son:
 
-Expediente --> Reserva --> Servicio
+::
+
+
+ Presupuesto --> Expediente --> Reserva --> Servicio
+
+
+
+Un presupuest, al confirmarse, se convierte en un expediente.
 
 El expediente es como una carpeta donde vamos metiendo todas las peticiones que nos hace un cliente, que agrupamos bajo un mismo localizador.
 
-La reserva es una solicitud que nos hace el cliente. Puede ser por ejemplo una petición de traslado de entrada y salida, o una estancia con traslado, o un ticket de una excursión.
+La reserva es una solicitud que nos hace el cliente. Puede ser por ejemplo una petición de traslado de entrada y salida, o una estancia con traslado, una excursión o una entrada.
 
-Un expediente puede contener varias reserva, y una reserva puede generar varios servicios.
+Un expediente puede contener varias reservas, y una reserva puede generar varios servicios.
+
+El servicio es la unidad básica para la gestión operativa (o compra) de la reserva, que veremos en otro capítulo más adelante.
 
 
 Expediente
@@ -147,12 +158,6 @@ General
   Agencia
     Agencia a la que pertenece este expediente
 
-  Título
-    Un título para este expediente
-
-  Referencia agencia
-    Nº de vuelo, id tour, ...
-
   Titular
     El titular de este expediente
 
@@ -161,9 +166,6 @@ General
 
   Teléfono
     Teléfono de contacto
-
-  Abierto
-    Mientras un expediente está abierto pueden añadirse y/o modificarse servicios.
 
   Cancelado
     Indica si todos los servicios incluidos en este expediente han sido cancelados
@@ -174,13 +176,10 @@ General
 Datos de facturación
   Si queremos sobreescribir los datos de facturación de la agencia. Por ejemplo en el caso de un contado.
 
-  Nombre
-    Nombre que debe aparecer en la factura
-
   Nombre fiscal
     Nombre fiscal
 
-  Nif
+  VAT id
     Nif del cliente
 
   Dirección
@@ -198,28 +197,21 @@ Datos de facturación
   País
     País
 
-Peticiones de cotización
-  Lista de peticiones de cotización (tanto de la agencia como a proveedores) relacionadas con este expediente.
+Petición de cotización
+  Presupuesto asociado, si es que este expediente ha sifo generado por la confirmación de un presupuesto.
 
 Reservas
   Lista de reservas incluidas en este expediente.
 
-Servicios
-  Lista de servicios relacionados con este expediente
-
-Líneas de cargo
-  Líneas de cargo relacionadas con este expediente
-
 Pagos
   Pagos relacionados con este expediente
-
-Incidencias
-  Lista de incidencias, emails y comentarios relacionados con este expediente
 
 
 Naturalmente a nivel de expediente tenemos siempre un total, el margen que ha dejado y un saldo con sus respectivos desgloses / extractos.
 
 Recordar que el valor de una reserva no tiene por que corresonderse con el valor a facturar. Sería el caso por ejemplo de una reserva de facturación directa, o de una reserva donde nosotros actuamos como representante y solo nos llevamos una comisión, aunque el cliente debe ver el valor real del servicio.
+
+Las mismas operaciones que podemos hacer con cada reserva individual (entrar pagos, enviar email, enviar bonos, facturar) las pordemos hacer desde el expediente de manera conjunta.
 
 Reserva
 -------
@@ -229,8 +221,34 @@ Para cada reserva debemos indicar
 Expediente
   Expediente al que está adscrito esta reserva. Es obligatorio
 
-Venta directa
-  Si esta reserva es venta directa (el contrato lo ha firmado el touroperador con el proveedor).
+Ticket
+  Si esta reserva ha sido vendida con un ticket de un talonario (los talonarios los veremos más adelante).
+
+Agencia
+  Agencia a la que hay que facturar esta reserva
+
+Tarifa
+  Que tarifa debemos emplear para valorar esta reserva
+
+Referencia agencia
+  Que referencia nos ha dado la agencia para esta reserva. Este dato aparecerá después en las facturas para que la agencia pueda matar el coste.
+
+Titular
+  Titular de la reserva
+
+Pasajeros
+  Lista de datos de los paasajeros. Para cada pasajero podemos indicar el nombre, apellidos, edad, fecha de nacimiento y comentarios
+
+Email
+  Email de contacto. A esta dirección se enviarán los emails relacionados con esta reserva
+
+Teléfono
+  Teléfono de contacto
+
+Confirmada
+  Una reserva puede estar confirmada o no. Hasta que la reserva no esté confirmada no se generarán los servicios necesarios para realizar la compra de los mismos.
+  La confirmación de la reserva se puede hacer de manera manual o porque recibamos el pago de la misma.
+  Cuando creamos una reserva manualmente por defecto queda confirmada a no ser que indiquemos lo contrario.
 
 Punto de venta
   Punto de venta para esta reserva
@@ -238,28 +256,119 @@ Punto de venta
 Mercado
   Mercado al que pertenece el pasajero
 
-Representante
-  Quien se lleva la comisión
+Inicio
+  Fecha de inicio de los servicios relacionados con esta reserva
 
-Cancelada
-  Si la reserva está cancelada
+Fin
+  Fecha de finalización de los servicios relacionados con esta reserva
 
-En firme
-  Si la reserva es en firme. En caso contrario estamos ante un presupuesto
+Pax
+  Total pax de esta reserva
+
+Bebés
+  Bebés de esta reserva
+
+Niños
+  Niños de esta reserva
+
+Juniors
+  Juniors de esta reserva
+
+Adultos
+  Adultos de esta reserva
+
+Seniors
+  Seniors de esta reserva
+
+Bebés gratis
+  Bebés gratis de esta reserva
+
+Niños gratis
+  Niños gratis de esta reserva
+
+Juniors gratis
+  Juniors gratis de esta reserva
+
+Adultos gratis
+  Adultos gratis de esta reserva
+
+Seniors gratis
+  Seniors gratis de esta reserva
+
+Peticiones especiales
+  Peticiones especiales del cliente. Es un campo de texto y no tiene ninguna implicación. Simplemente se traslada tal cual al proveedor.
+
+Comentarios privados
+  Comentarios de uso interno. No aparecen en ningún listado ni comunicación
+
+Fecha de formalización
+  Fecha de formalización de la reserva. Se utiliza para cálculo de release y aplicaciónd el algunas condiciones y ofertas
 
 Fecha de caducidad
   Si la indicamos, la reserva se cancelará automáticamente en esa fecha y hora si para entonces la reserva no es en firme.
 
-Confirmada
-  Si hemos confirmado el servico al cliente. Si no está marcado, esta reserva está on request, pendiente de contestación.
-
 Bloqueada
   Si bloqueamos la reserva entonces el sistema de importación no la tocará
+
+Vencimientos
+  Fechas de cobro para esta reserva
+
+Valor sobreescrito
+  Si queremos indicar el precio exacto de esta reserva, sin mirar los contratos
+
+Proveedor
+  Si queremos indicar desde la reserva a quién debemos comprar lso servicios relacionados con la misma
+
+Coste sobreescrito
+  Si queremos indicar el precio exacto de esta reserva, sin mirar los contratos
+
+Contrato
+  Si queremos utilizar los precios y el cupo de un contrato concreto
 
 Ya facturado
   Si esta reserva ya la hemos facturado fuera de QuoTravel
 
+Ya comprado
+  Si no hace falta enviar la petición de compra al proveedor porque ya lo hemos resuelto fuera del sistema
 
+Servicios
+  Lista de servicios generados para esta reserva
+
+Cargos
+  Cargos derivados de la reserva. No son modificables
+
+Cargos extra
+  Cargos adicionales que imputamos a esta reserva. Podemos manipularlos
+
+Pagos
+  Pagos (cobros en realidad) relacionados con esta reserva
+
+Transacciones TPV
+  Pagos de la pasarela de pagos relacionados con esta reserva
+
+Condiciones de cancelación
+  Condiciones de cancelación para esta reserva
+
+Comisionista
+  Quien se lleva la comisión
+
+No comisionable
+  Si a pesar de estar relacionada con un comisionista decidimos que esta reserva no genere una comisión
+
+Datos de facturación
+  Si queremos sobreescribir los datos de facturación de la agencia. Lo utilizaremso normalmente cuando sea una venta de directos o contado
+
+Nombre del agente
+  Simple campo para utilizar luego a nivel de información / estadísticas
+
+Tareas
+  Tareas (normalmente envío de emails) relacionadas con esta reserva
+
+Comisiones
+  Lista de comisiones derivadas de esta reserva
+
+Check time
+  Fecha y hora en que se ha entregado el servicio al cliente
 
 Y, en función del tipo de reserva:
 
@@ -477,70 +586,6 @@ Suplementos
   Lista de suplementos opcionales elegidos
 
 
-Ticket
-^^^^^^
-
-Plantilla para meter la venta de un ticket (excursión, por un representante)
-
-
-Fecha venta
-
-Representante
-
-Nº ticket
-
-Fecha servicio
-
-Excursión
-
-Turno
-
-Confirmación proveedor
-
-Pax
-
-Nombre cliente
-
-Hotel / punto de recogida
-
-Hora recogida
-
-Nº habitación
-
-Observaciones
-
-Gratuidades (compra y venta)
-
-No comisionable
-
-
-
-
-
-    Fecha venta
-    Nº Ticket
-    Guía venta / Representante
-    Fecha servicio
-    Excursión
-    Turno
-    Confirmación proveedor
-    Nombre cliente (pasajero)
-    Idioma
-    Personas
-    Hotel / Punto de recogida
-    Hora recogida
-    Num. Habitación
-    Observaciones
-    Gratuidades (Compra y Venta)
-    No comisionable
-
-
-
-
-
-
->>>>>>>>>>>> NOTA: considerar cambiar Booking por File y BookingPart por Booking
-
 
 Identificación de una reserva
 =============================
@@ -558,7 +603,7 @@ La verdad es que la reserva incluye varios estados, cada uno para indicar un est
 
 Estos son los diferentes estados relacionados con la reserva:
 
-- Booking
+- Expediente
 
   - Estado del expediente:
 
@@ -567,7 +612,7 @@ Estos son los diferentes estados relacionados con la reserva:
     - Cerrado
       No admite más reservas ni modificación de las existentes
 
-- BookingPart
+- Reserva
 
   - Petición cliente cliente
     Puede ser una petición en firme o un presupuesto
@@ -578,7 +623,7 @@ Estos son los diferentes estados relacionados con la reserva:
   - Servicios
     Puede estar en estado "Servicios confirmados" o en estado "Servicios no confirmados"
 
-- Service
+- Servicio
 
   - Activo
     Puede estar on activa o cancelada
@@ -587,12 +632,12 @@ Estos son los diferentes estados relacionados con la reserva:
   - Compra
     Puede estar on request o confirmada
 
-- PurchaseOrder
+- Pedido de compra
 
   - Estado
     Puede estar pendiente, enviada, leída, rechazada o confirmada
 
-- Task
+- Tarea (normalmente envío email)
 
   - Estado
     Puede estar pendiente de enviar o enviada
@@ -603,13 +648,13 @@ Presupuesto / reserva de cupo
 
 Mientras una reserva no ha sido confirmada por el cliente se entiende que es un presupuesto.
 
-En este estado, la reserva puede reservar cupo o no.
+En este estado, la reserva reserva cupo si es producto propio.
 
 Para las reservas en este estado podemos indicar una fecha de caducidad que, al vencer, cancelará automáticamente la reserva y devolverá el cupo en caso de que estuviese reservado.
 
 En el momento en que el cliente confirme la reserva se reserva el cupo si es que no ha sido reservado todavía.
 
-Naturalmente, puede pasar que ese cupo ya no esté disponible, o que el precio haya cambiado desde entonces.
+Naturalmente, si es producto de terceros puede pasar que ese cupo ya no esté disponible, o que el precio haya cambiado desde entonces.
 
 En ese caso el cliente recibe el aviso de la circustancia y puede reconfirmar la reserva o desecharla.
 
@@ -647,7 +692,6 @@ Esto quiere decir que podemos vender servicios independientemente de a quién se
 
 O cambiar el proveedor de un servicio en cualquier momento.
 
->>>>> Poner ejemplos.
 
 
 Frees
@@ -684,17 +728,6 @@ A la hora de hacer la reserva podemos indicar si es necesario que haya precios (
 Si existiese un paro de ventas que afecte a nuestra reserva el sistema nos avisará, pero podremos realizar la reserva igualmente.
 
 
-Entrada masiva de reservas
-==========================
-
-En QuoTravel hay algunas pantallas para facilitar la entrada masiva de reservas.
-
-Es el caso de la entrada de un vuelo de un touroperador.
-
-
-Generar excel --> modificar --> subir excel.
-
-
 Control rentabilidad
 ====================
 
@@ -726,9 +759,6 @@ La calculadora es un campo de texto libre que nos permite indicar una fórmula p
 Hay variables predefinidas, y podemos poner comentarios.
 
 
->>>>>>> explicar la sintaxis.
-
-
 Visibilidad total
 =================
 
@@ -747,8 +777,6 @@ Así, desde la reserva podemos acceder a:
   - Pagos
   - Asientos contables
 
->>>>>>>>> Ojo permisos a nivel de entidad
-
 
 Operativa automática
 ====================
@@ -758,7 +786,7 @@ En este apartado hacemos referencia a la operativa automática de la reserva de 
 
 Así, el flujo general de una reserva es:
 
-Cotización? --> reserva --> organizar servicios / mandar al proveedor --> fin
+Cotización --> expediente / reservas --> organizar servicios / mandar al proveedor --> fin
 
 
 En el caso de una reserva de cliente final el flujo de la misma es:
@@ -770,9 +798,6 @@ Reserva --> email confirmación --> email aviso 1er pago --> email aviso 2o pago
 En el caso de una reserva de una agencia a credito el flujo es el siguiente:
 
 Reserva --> email confirmación / voucher --> reserva cancelada
-
-
->>>>>>>>> pensar si incluimos algunos gráficos
 
 
 
@@ -807,48 +832,13 @@ El sistema mandará un email tanto al cliente como a la delegación como al prov
 
 Esta operativa es propia de reservas que utilizamos para reservar cupo.
 
+
 Registro cambios
 ================
 
 Todas las reservas registran los cambios que hacemos sobre las mismas, y podemos consultar ese registro de cambios desde la misma reserva.
 
 Si los cambios que realizamos sobre una reserva afectan al servicio se dispara la operativa para que esos cambios lleguen al proveedor.
-
-Promo codes
-===========
-
-Los promo codes son ofertas especiales, muy sencillas, que podemos crear para después aplicar un descuento especial a un cliente.
-
-Para cada promo code definimos
-
-Code
-  Si queremos indicarlo nosotros (opcional)
-
-Nombre
-  Descripción de la oferta
-
-Porcentaje
-  Porcentaje descuento
-
-Importe
-  Importe descuento
-
-Divisa
-  Divisa para el caso de que hayamos indicado un importe
-
-Cupo
-  Nº de veces que podemos aplicar esta oferta / descuento (no sobre la misma reserva)
-
-Concepto de facturación
-  A utilizar cuando se aplique este descuento
-
-Caducidad
-  Fecha y hora hasta las que es válido este decuento
-
-El sistema nos dará un código que es el que debemos utilizar cuando hacemos la reserva, si queremos aprovecharnos de la oferta.
-
-Para cada promo code podemos ver las reservas en que se ha utilizado y el importe total del descuento aplicado.
-
 
 
 Gastos de cancelación
@@ -916,6 +906,9 @@ Servicio
 Texto
   Texto explicativo de la incidencia
 
+Concepto de facturación
+  Concepto de facturación a utilizar en el cargo
+
 Cargo a la venta
   Líneas de cargo asociadas a la venta. Puede ser en positivo o en negativo.
 
@@ -934,12 +927,6 @@ Para poder gestionarla de manera adecuada disponemos en Quonext de varias consul
 Las consultas disponibles son:
 
 - Vuelos
-- Grupos
-- Llegadas
-- Salidas
-- Excursiones
-- Circuitos
-- Pax en destino
 
 
 

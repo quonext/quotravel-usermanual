@@ -1400,7 +1400,7 @@ Idiomas
 
 Aquí podemos definir los diferentes idiomas para las excursiones.
 
-Para idioma podemos definir un código y un nombre en multiidioma.
+Para cada idioma podemos definir un código y un nombre en multiidioma.
 
 
 Programación
