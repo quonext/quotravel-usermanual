@@ -1387,22 +1387,6 @@ No obstante, podemos personalizar la generación de los asientos contables inyec
 NOTA: aquí incluiremos una referencia a la interfaz que hay que implementar, la clase que utiliza QuoTravel y como inyectar nuestro generador en nuestro QuoTravel.
 
 
-Exportación a contabilidad
-==========================
-
-Actualmente QuoTravel soporta la exportación a A3.
-
-En el caso de A3 podemos ir en cualquier momento a la contabilidad y utilizar la opción "Exportar".
-
-Deberemos indicar hasta que fecha queremos incluir facturas y pagos y nos generará una exportación.
-
-Desde la exportación podremos bajarnos el fichero que luego importaremos en A3.
-
-Las facturas y los pagos quedarán relacionados con esa exportación.
-
-
-NOTA: hay que estudiar la integración con Navision.
-
 
 *********************
 Mecanismos de control
