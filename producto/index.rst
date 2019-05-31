@@ -13,14 +13,14 @@ En QuoTravel podemos cargar cuatro tipos de producto:
 - Genérico
 - Hotel
 - Traslado
-- Paquetes
+- Excursiones y circuitos
 
 
-El hotel, traslado y los paquetes tienen una carga específica dadas us características, mientras que el resto de productos los podemos meter como genéricos.
+El hotel, traslado y las excursiones / circuitos tienen una carga específica dadas sus características, mientras que el resto de productos (entradas, guía oficial, transporte, ...) los podemos meter como genéricos.
 
 Para todos ellos podemos indicar una descripción, precios, paros y de ventas y cupos.
 
-No obstante, veremos que la cosa se va complicando en cada caso concreto.
+No obstante, veremos que la carga de producto se va especializando en cada caso concreto.
 
 
 ***********
@@ -183,7 +183,6 @@ Para acada tipo de producto debemos indicar una descripción y una mara ara indi
 
 Los tipos de producto hotel, traslado y tour ya están predefinidos.
 
-
 Segmentación
 ============
 
@@ -192,6 +191,45 @@ Para todos los contratos podemos indicar para que empresas, mercados, y agencias
 También es posible para cada contrato indicar que esas condiciones solo son aplicables cuando son utilizadas cuando son utilizadas en un tour concreto.
 
 Estos parámetros se comprueban en tiempo de disponibilidad y para cada reserva que confirmamos.
+
+Tarifas
+=======
+
+Para todos los contratos y, en algunos casos, líneas de precio podemos indicar para que tarifa son aplicables.
+
+Casos típicos de tarifas pueden ser *estándar*, *estudiantes*, *imserso*, ....
+
+En todas las reservas indicamos siempre la tarifa que queremos utilizar, con lo que sabemos que precios tenemos que aplicar.
+
+
+Observaciones
+=============
+
+Podemos definir observaciones que deben aparecer automáticamente al hacer una reserva.
+
+Para cada observación podemos indicar uns serie de filtros (que se utilizan si esta observación debe aparecer):
+
+- Tipo de producto
+- País
+- Destino
+- Resort
+- Fecha inicio
+- Fecha fín
+- Activa
+
+Y un texto en multiidioma.
+
+
+
+Etiquetas
+=========
+
+En QuoTravel podemos crear etiquetas que podremos luego asociar a los productos (una excursión, un hotel, un genérico, ...) y utilizarlas como filtros en el proceso de reserva.
+
+Para cada etiqueta podemos indicar:
+
+- nombre
+- descripción en multiidioma
 
 
 Modelo de precios
@@ -391,8 +429,14 @@ Contrato
 Producto
   Producto al que se aplican estos precios
 
+Variante
+  Variante del producto a la que se aplican estos precios
+
 Extra
   El extra al que se aplica este precio
+
+Activo
+  Si esta línea de precio está activa
 
 Concepto de facturación
   Concepto de facturación a utilizar para estos precios
@@ -427,33 +471,61 @@ Inicio
 Final
   Fecha de servicio hasta la que es aplicable este precio
 
+Inicio booking window
+  Fecha de reserva desde la que es aplicable este precio
+
+Final booking window
+  Fecha de reserva hasta la que es aplicable este precio
+
 Precio por unidad
   Este precio se añadirá multiplicado por el nº de unidades
 
-Precio por adulto
-  Este precio se añadirá multiplicado por el nº de adultos
+Precio por pax
+  Este precio se añadirá multiplicado por el nº de pax cualesquiera sea su edad
+
+Precio por bebé
+  Este precio se añadirá multiplicado por el nº de bebés
 
 Precio por niño
   Este precio se añadirá multiplicado por el nº de niños
 
+Precio por junior
+  Este precio se añadirá multiplicado por el nº de juniors
+
+Precio por adulto
+  Este precio se añadirá multiplicado por el nº de adultos
+
+Precio por senior
+  Este precio se añadirá multiplicado por el nº de seniors
+
 Precio por unidad y día
   Este precio se añadirá multiplicado por el nº de unidades y por el nº de días
 
-Precio por adulto y día
-  Este precio se añadirá multiplicado por el nº de adultos y por el nº de días
+Precio por pax y día
+  Este precio se añadirá multiplicado por el nº de pax cualesquiera sea su tipo y por el nº de días
+
+Precio por bebé y día
+  Este precio se añadirá multiplicado por el nº de bebés y por el nº de días
 
 Precio por niño y día
   Este precio se añadirá multiplicado por el nº de niños y por el nº de días
 
+Precio por junior y día
+  Este precio se añadirá multiplicado por el nº de juniors y por el nº de días
+
+Precio por adulto y día
+  Este precio se añadirá multiplicado por el nº de adultos y por el nº de días
+
+Precio por senior y día
+  Este precio se añadirá multiplicado por el nº de seniors y por el nº de días
+
 Orden
   Orden de aplicación de este precio
 
-Suma
-  Si marcamos este campo, estos precios se suman a los ya calculados.
+Precio final
+  Si marcamos este campo esta es la última línea que vamos a mirar para calcular el precio.
 
 
-
-En los precios incluimos suplementos y ofertas.
 
 El precio es el resultado de la aplicación de todas las líneas que coinciden con nuestra reserva, en el orden especificado.
 
