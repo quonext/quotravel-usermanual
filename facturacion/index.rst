@@ -66,14 +66,22 @@ General
     El nombre que debe aparecer en las facturas
   Dirección
     La dirección de la empresa
-  País
-    El país de la empresa
-  Localidad
-    La localidad de la empresa
   Código postal
     El código postal de la empresa
+  Localidad
+    La localidad de la empresa
+  Provincia
+    La provincia en que está ubicada la empresa
+  País
+    El país de la empresa
+  Teléfono
+    Teléfono de la empresa
+  Fax
+    Fax de la empresa
   Email
     El email de la empresa. Aquí es donde vamos a enviar las facturas.
+  Comentarios
+    De uso interno
 
 Impuestos
   Información para la aplicación del IVA
@@ -87,6 +95,9 @@ Impuestos
 
 Como cliente
   Información para este cliente como destinatario de las facturas que emitimos
+
+  Venta directa
+    Lo marcaremos para indicar que este cliente es de contado
 
   Regla de facturación automática
     Si queremos que se le facture automáticamente o manualmente.
@@ -118,6 +129,21 @@ Como cliente
   Separar servicios
     Si marcamos esta opción generará facturas diferentes para cada tipo de servicio: hotel, traslado, excursiones, ...
 
+  Condiciones de pago
+    Condiciones de pago como cliente, para las facturas emitidas
+
+  Email facturación
+    Email al que enviaremos las facturas
+
+  Email facturación CC
+    Email al que enviaremos en copia las facturas
+
+  Método de envío de las facturas
+    Puede ser email o Voxel
+
+  Nº de cuenta como cliente
+    Para el enlace contable
+
 
 Como proveedor
   Aquí rellenamos la información relativa a esta empresa cuando actúa como proveedor nuestro
@@ -128,21 +154,11 @@ Como proveedor
   Permitir facturas antes de la fecha de entrada
     Lo marcamos si podemos acptar facturas de este proveedor antes de la entrada de los clientes. Si no está marcado, esas facturas se rentendrán hasta que llegue la fecha de inicio del servicio
 
+  Retención
+    Para el caso de que debamos retener IRPF de las facturas recibidas
 
-Depósitos
-  Aquí vemos una lista de los depósitos (dinero que hemos cobrado o pagado y que no está asociado a ninguna factura o reserva) relacionados con este partner.
-
-Pagos
-  Aquí indicamos la información relativa a pagos y cobros de este agente
-
-  Términos de pago
-    Aquí indicamos la forma de pago, que podemos editar en CRM --> Términos de pago
-
-  Retenciones
-    Aquí indicamos si este agente está sujeto a retenciones. Las retenciones las mantenemos en Financial --> Retenciones
-
-  Forma de pago
-    Aquí indicaremos la forma de pago: transferencia, cheque, VCC, .... El mantenimiento de los modos de pago lo encontramos en Financial --> Pagos --> Modos de pago
+  Método de pago
+    Método de pago de sus facturas
 
   Pagos bloqueados
     Si marcamos esta opción no podremos efectura pagos a este agente. Podmeos indicar también un motivo del bloqueo, ara acordarnos más tarde de por que hemos marcado esta opción
@@ -155,6 +171,7 @@ Pagos
 
   SWIFT
     Aquí indicamos el código swift para las transferencias
+
 
 Crédito
   Aquí indicamos el crédito que damos a este cliente
@@ -233,9 +250,14 @@ Contrato hotel
 Pedido de compra
   Pedido de compra relacionado con este cargo.
 
+Agencia
+  Agencia a la que se ha hecho el cargo
+
 Factura
   En que factura se ha incluido este cargo
 
+Liquidación
+  Liquidación de punto de venta (representante) en la que se ha liquidado este importe
 
 
 Es importante resaltar que todos los importes que introducimos en QuoTravel son con impuestos incluidos. Luego, en función del concepto de facturación y de otros factores, QuoTravel es capaz de deducir que impuestos y porcentajes debe aplicar.
@@ -469,17 +491,6 @@ Esa factura de comisión llegará al cliente conjuntamente con las facturas emit
 
 Si generamos la autofactura por la comisión o no lo indicamos en la ficha del partner.
 
-
-Multiempresa - facturación automática entre empresas
-====================================================
-
-QuoTravel es multiempresa.
-
-Esto quiere decir que en la misma plataforma podemos recibir reservas de diferentes clientes que luego podemos facturar desde diferentes empresas según decidamos.
-
-Podemos por ejemplo facturar nuestros servicios en México desde una empresa y los servicios que damos en España con una empresa diferente.
-
-También podemos unificar los servicios que damos desde diferentes empresas del grupo. En este caso nuestro cliente recibe facturas desde nuestra empresa matriz que, a su vez, recibe las facturas desde nuestra empresa en México.
 
 
 
@@ -1115,96 +1126,6 @@ Intra comunitario
 
 Si hemos marcado el cliente o el proveedor como intracomunitario todas las operaciones realizadas con este proveedor aparecerán marcadas como tales en el cierre de IVA.
 
-Cierre de IVA
-=============
-
-En cualquier momento podemos cerrar el IVA.
-
-Para ello nos iremos a Financial --> VAT --> Settlements y crearemos un nuevo cierre.
-
-QuoTravel nos pedirá la fecha de la última factura que queremos incluir, y nos dará el cierre provisional (importe a pagar).
-
-Al aceptarlo generaremos el cierre y las facturas (tanto las emitidas como las validadas) quedarán ligadas a ese cierre.
-
-Luego podemos ir al cierre que se ha generado y solicitar el informe para imprimirlo y enviarlo a Hacienda si así lo deseamos.
-
-
-Recuperación de IVA
-===================
-
-No lo gestionamos
-
-
-
-
-*****
-Tasas
-*****
-
-Las tasas propias de cada destino o país pueden:
-
-- ser abonadas en destino
-- estar incluidas en el precio que nos pasa el proveedor
-- puede darse el caso de que nosostros seamos el recaudador.
-
-
-Para el primer caso disponemos de las anotaciones por destino, que nos permite incluir un texto en las reservas de un destino concreto informando de las tasas.
-
-Para el segundo caso podemos simplemente incluir las tasas en el contrato del proveedor, o podemos crear la tasa tal como veremos a continuación.
-
-Para el tercer caso debemos crear la tasa si queremos que se calcule e incluya automáticamente en la reserva.
-
-
-Esta claro que podemos incluir las tasas en forma de suplementos obligatorios, pero utilizando las tasas nos ahorramos tener que indicarlas en cada contrato y la información que mostramos después en la reserva es más clara.
-
-
-Para cada tasa podemos indicar:
-
-Nombre
-  Para identificar la tasa
-
-Texto
-  Este es el texto que aparecerá en las líneas de cargo. Puede ser más extenso que el nombre de la tasa
-
-Fechas aplicación
-  Aplicar desde fecha servicio hasta fecha servicio
-
-Concepto de facturación
-  Concepto de facturación a utilizar
-
-Tipos de servicio sobre los que aplica
-  Lista de tipos de servicio sobre los que hay que aplicar esta tasa (estancia hotel, traslado, ...).
-
-Lista de destinos
-  Lista de paises y destinos en los que hay que aplicar esta tasa
-
-Somos recaudador
-  Aquí indicamos si esta tasa solo la aplicamos en la venta (somos el recaudador)
-
-Porcentaje
-  Si la tasa es un porcentaje sobre el importe total (impuestos incluidos) de la reserva
-
-Moneda
-  Moneda en que están expresados los importes que siguen
-
-Importe por reserva
-  Importe fijo por reserva
-
-Importe por pax
-  Importe fijo por pax
-
-Importe por día
-  Importe fijo por día
-
-Importe por pax y dia
-  Importe fijo por pax y día
-
-
-Recordar que los valores son con impuestos incluidos, y que la aplicación de impuestos la controlamos con el concepto de facturación.
-
-Luego existe una consulta para saber lo que hemos facturado y/o pagado por un concepto de facturación, que es la que nos dirá lo que hemos recaudado por dicha tasa en un periodo concreto.
-
-El importe correspondiente a tasas aparece reflejado en el resumen de la reserva y en el desglose del precio de la misma.
 
 
 ***
@@ -1359,10 +1280,9 @@ Gestión divisas
 
 En QuoTravel podemos indicar operaciones en diferentes divisas.
 
-En cada operación aparecen 3 divisas:
+En cada operación aparecen 2 divisas:
 
 - la divisa de la operación
-- la divisa de la oficina
 - la divisa de la empresa / contable
 
 En cada operación se registra la fecha y la hora de la misma, así como el ratio aplicado para el cambio entre las diferentes divisas.
