@@ -1197,8 +1197,6 @@ Excursiones y circuitos
 
 En QuoTravel los tours son, en esencia, una composición de servicios con unas reglas especiales de disponibilidad (turnos, cupos).
 
-Es en realidad un paquete.
-
 Entran en esta categoría las excursiones y circuitos.
 
 En QuoTravel las excursiones no son más que un caso simple de circuito, que básicamente no incluye estancia de hotel ni otras excursiones / circuitos.
@@ -1221,10 +1219,43 @@ Los tours (circuitos y excursiones) tienen 3 partes diferenciadas:
 Excursión / Circuito
 ====================
 
-Para cada tour podemos definir:
+Para cada excursión / circuito podemos definir:
+
+Nombre
+  nombre de la excursión / circuito
+
+Tipo
+  Tipo de producto
+
+Activa
+  Si la excursión / circuito está activa
 
 Oficina
   Para saber quien gestiona esta excursión
+
+Proveedor
+  Para indicar el proveedor por defecto
+
+Línea de producto
+  Para indicar a que línea de producto pertenece esta excursión / circuito
+
+Restor
+  Para ubicar esta excursión / circuito
+
+Ficha
+  Ficha de la excursión / circuito, con descripciones, fotos, etc
+
+Edades
+  Podemos indicar la edad desde para:
+
+  - Niños
+  - Juniors
+  - Adultos
+  - Seniors
+
+
+Venta libre
+  No controlamos el cupo. Si una excursión no debe estar disponible paramos ventas.
 
 Duración
   Este campo se tiene luego en cuenta al calcular algunos costes de la excursión. Puede ser una de las siguientes opciones:
@@ -1234,32 +1265,22 @@ Duración
   - Nocturna
   - Larga duración (circuito)
 
-Variantes
-  Lista de variantes disponibles para esta excursión. Afecta al precio y aparece después en los listados de la gestión operativa de la excursión.
-
-Propia
-  Si marcamos este campo entonces es una excursión propia. Nosotros organizamos la excursión.
-
-Recogemos a los clientes
-  Si marcamos esta opción pasamos a recoger a los clientes y luego los dejamos en su hotel / aeropuerto. Si no marcamos esta opción los clientes deben presentarse a la hora indicada en el punto de encuentro.
-
-Utilizar el transporte para regoger a los clientes
-  Si marcamos este campo recogeremos a los clientes y los dejaremos utilizando el transporte que hemos contratado para el tour
-
-Punto de encuentro
-  Punto de recogida donde comienza y termina el cuerpo de la excursión / circuito.
-
-Venta libre
-  No controlamos el cupo. Si una excursión no debe estar disponible paramos ventas.
-
-Activa
-  Si no marcamos este campo la excursión no estará a la venta.
-
-Edades
-  Aquí indicamos la edad a partir de la cual consideramos que una persona es niño y la edad a partir de la cual consideramos que una persona es adulto.
+Confirmación proveedor requerida
+  Para indicar que esta excursión necesita confirmar con el proveedor que hay disponibilidad. Si lo marcamos aparecerá en la app de representantes un aviso cuando haga la venta.
 
 Esqueleto costes
-  Aquí indicamos los servicios que necesita esta excursión. Por cada línea de coste podemos indicar:
+================
+
+  Aquí indicamos los servicios que necesita una excursión / circuito. Por cada línea de coste podemos indicar:
+
+  Tour
+    Aquí indicamos la excursión / circuito
+
+  Variante
+    Aquí indicamos la variante. Si no se indica este coste es común en todas las variantes de la excursión / circuito
+
+  Extra
+    Si este coste debe aparecer cuando se contrate este extra
 
   Tipo producto
     Puede ser cualquiera de los que hemos definido en QuoTravel.
@@ -1267,26 +1288,26 @@ Esqueleto costes
   Categoría hotel
     En el caso de que sea una estancia en un hotel.
 
-  Zona
-    Zona donde debe estar ubicado el producto
-
   Producto
     Puede ser cualquier otro producto que hayamos definido en QuoTravel, incluso otra excursión / circuito.
+
+  Variante del producto
+    Aquí indicamos la variante del producto del coste
+
+  Zona recogida
+    Este coste es aplicable cuando se recoja al cliente en la zona indicada
+
+  Desde pax
+    Este coste aplica a partir del nº de pax indicado
+
+  Hasta pax
+    Este coste aplica hasta el nº de pax indicado
 
   Proveedor
     Aquí indicamos el proveedor que nos puede proporcionar el servicio
 
-  Pago contado
-    Aquí indicamos si este servicio tiene que pagarlo la guía al contado, de manera que aparecerá en el resúmen previo de la excursión para entregarle el dinero a la guía (y que firmará conforme se le ha entregado), y posteriormente liquidarlo a la finalización de la misma.
-
-  Coste por ticket
-    Si marcamos este campo esperamos una línea por cada ticket en la factura del proveedor. Si no está marcado esperamos un coste por servicio.
-
-  Venta por vehículo
-    Solo para el cupo. No tiene ningún efecto sobre el precio.
-
-  Precisa confirmación del proveedor
-    Si marcamos este campo los servicios no quedan marcados como confirmados por el simple hecho de mandarlos al proveedor. El proveedor debe confirmar el servicio.
+  Orden
+    Órden de coste
 
   Día
     En que día del circuito empieza este servicio
@@ -1294,28 +1315,73 @@ Esqueleto costes
   Noches
     Nº de noches para este servicio
 
-  Duración
-    En el caso del transporte, el nº de horas que necesitamos el transporte
+  Unidades
+    Nº de unidades para este servicio. En el caso del transporte, el nº de horas que necesitamos el transporte
+
+  Pago contado
+    Aquí indicamos si este servicio tiene que pagarlo la guía al contado, de manera que aparecerá en el resúmen previo de la excursión para entregarle el dinero a la guía (y que firmará conforme se le ha entregado), y posteriormente liquidarlo a la finalización de la misma.
+
+  Precisa confirmación del proveedor
+    Si marcamos este campo los servicios no quedan marcados como confirmados por el simple hecho de mandarlos al proveedor. El proveedor debe confirmar el servicio.
+
+  Coste sobreescrito
+    Si marcamos esta opción no utilizará los contratos cargados para calcular el coste. Al marcarlo aparceen los campos para indicar el coste:
+
+    - Coste mínimo
+    - Coste por servicio
+    - Coste por unidad
+    - Coste por pax, independientemente de su calificación
+    - Coste por bebé
+    - Coste por niño
+    - Coste por junior
+    - Coste por adulto
+    - Coste por senior
+
+Zonas de recogida
+=================
+
+Aquí podemos definir las diferntes zonas de recogida de las excursiones.
+
+Para cada zona podemos definir un nombre, una lista de resorts y un meeting point.
+
+Luego estas zonas las podremos utilizar para definir un precio o suplemento para la excursión si recogemos al cliente en esta zona.
+
 
 Turnos
 ======
 
 Para cada excursión podemos definir diferentes turnos. Para cada turno podemos definir:
 
-Touroperador
-  Si este turno es exclusivo para una agencia / touroperador
+Nombre
+  Nombre del turno
 
-Mercado
-  Si este turno es exclusivo para un mercado concreto
+Excursión
+  Excursión para este turno
 
-Cupo
-  Nº de plazas disponibles en este turno, por fechas
+Fecha de inicio
+  Fecha a partir de la cual aplica este turno
+
+Fecha de fin
+  Fecha hasta la cual aplica este turno
+
+Días de la semana
+  Días de la semana en que es válido este turno
 
 Release
   Antelación necesaria en días para poder hacer una reserva
 
 Hora de inicio
   Hora de inicio del turno
+
+Touroperador
+  Si este turno es exclusivo para una agencia / touroperador
+
+Cupo
+  Nº de plazas disponibles en este turno, por fechas
+
+Idiomas
+  Idiomas aplicables a este turno
+
 
 Horarios de recogida
   No se puede vender una excursión si no hay hora de recogida. Aquí indicamos tanto punto de regogida como la hora. Así, para cada línea podemos indicar:
@@ -1329,33 +1395,40 @@ Horarios de recogida
   Orden
     Órden de recogida
 
-Calendario
-==========
+Idiomas
+=======
 
-Aquí indicamos la disponibilidad de esta excursión.
+Aquí podemos definir los diferentes idiomas para las excursiones.
 
-Para cada entrada del calendario podemos definir:
+Para idioma podemos definir un código y un nombre en multiidioma.
+
+
+Programación
+============
+
+Aquí indicamos la disponibilidad de un circuito.
+
+Para cada entrada de la programación podemos definir:
+
+Circuito
+  A que circuito aplica esta programación
 
 Fecha inicio y fin
   Fechas en las que es aplicable esta línea
 
-Turnos
-  Turnos disponibles en estas fechas. Recordar que los turnos pueden ser exclusivos para un touroperador o mercados.
-
-Zonas
-  Zonas desde las que se puede hacer la excursión.
-
 Días de la semana
   Durante este periodo, la excursión solo está disponible en los días de la semana marcados
 
+Cupo
+  Máximo de plazas para esta salida
 
-Extras
-======
 
-Los extras nos sirven, como en el caso del producto genérico, para indicar tanto suplementos como descuentos y ofertas.
+Contrato
+========
 
-Tiene los mismos campos que en el producto genérico pero, además, podemos indicar que su selección implica contratar un servicio adicional.
+Los contratos de excursiones no añaden nada nuevo a las cabeceras de contrato estándar de cualquier producto.
 
+En un mismo contrato podemos indicar el precio de varias excursiones / circuitos.
 
 
 Tarifas de venta
@@ -1365,23 +1438,29 @@ Para cada excursión podemos definir el precio de venta.
 
 Para definir el precio de venta rellenamos una lista donde, para cada línea, podemos indicar:
 
-Touoperador
-  Filtro. Si este precio es exclusivo para un touroperador
+Contrato
+  Contrato al que pertenece este precio.
 
 Tour
-  Filtro. Tour al que corresponden estos precios
+  Filtro. Excursión / circuito al que corresponden estos precios
 
 Variante
-  Filtro. Variante del tour a la que corresponden estos precios
+  Filtro. Variante de la excursión / circuito a la que corresponden estos precios
 
-Zona
+Zona de recogida
   Filtro. Para que zona de recogida es aplicable este suplemento
-
-Hotel
-  Filtro. Para que hotel de recogida es aplicable este suplemento
 
 Extra
   Filtro. Si esta línea es aplicable para un extra concreto.
+
+Concepto de facturación
+  Acción. Entre otras cosas permite a QuoTravel saber que impuestos debe aplicar
+
+Descripción
+  Acción. Descripción que aparecerá en la línea de cargo
+
+Tarifa
+  Filtro. Para que tarifa es aplicable este precio
 
 Fecha inicio / final
   Filtro. Fechas de la reserva (fecha de servicio) para las que es aplicable este precio
@@ -1389,33 +1468,38 @@ Fecha inicio / final
 Booking window
   Filtro. Para que fechas de reserva es válida esta oferta
 
-Concepto de facturación
-  Acción. Entre otras cosas permite a QuoTravel saber que impuestos debe aplicar
+Min pax
+  Mínimo pax para cálculo precio
 
-Comisionable
-  Acción. Aquí marcamos si este suplemento entra después en el cálculo de las comisiones
+Precio por servicio
+  Acción. Importe con impuestos incluidos
 
-Descripción
-  Acción. Descripción que aparecerá en la línea de cargo
+Precio por pax
+  Acción. Importe con impuestos incluidos
 
-Porcentaje
-  Acción. % sobre el precio acumulado
-
-Porcentaje
-  Acción. % sobre el precio de la excursión, una vez aplicado el suplemento de zona?.
-
-Precio adulto
+Precio bebé
   Acción. Importe con impuestos incluidos
 
 Precio niño
   Acción. Importe con impuestos incluidos
 
+Precio junior
+  Acción. Importe con impuestos incluidos
+
+Precio adulto
+  Acción. Importe con impuestos incluidos
+
+Precio senior
+  Acción. Importe con impuestos incluidos
+
 Orden aplicación
   Filtro. En que orden debe aplicarse esta línea de precio
 
-Sustituye al precio
-  Acción. Si lo marcamos no se aplica en forma de suplemento, sino que sustituye al precio de la excursión una vez aplicado el suplemento de zona?
+Precio final
+  Acción. Si lo marcamos esta es la última línea de precio que se va a mirar
 
+Activo
+  Inidica si esta línea de precio está activa
 
 ********************
 Producto de terceros
