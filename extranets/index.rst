@@ -8,7 +8,6 @@ Tenemos accesos específicos para:
 
 - agencias
 - proveedores
-- representantes
 - aeropuerto
 
 Para habilitar dichos accesos basta crear los usuarios asociados al partner.
@@ -31,14 +30,6 @@ La extranet para las agencias permite
 - Consulta de disponibilidad y precios
 - Confirmación y gestión de reservas
 - Descarga de facturas
-- Presupuestos
-
-  - Solicitud
-  - Seguimiento
-  - Confirmación
-
-- Consulta de la situación de pagos (pendientes y realizados)
-
 
 
 
@@ -51,9 +42,6 @@ La extranet para proveedores permite
 - Carga producto (fichas, paros de ventas, cupos, contratos, ofertas, ...)
 - Descarga manifiesto
 - Confirmar o rechazar servicios on request
-- Carga facturas
-- Respuesta cotizaciones
-
 
 
 *******************

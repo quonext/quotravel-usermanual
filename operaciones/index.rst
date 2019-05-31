@@ -477,9 +477,9 @@ El excel debe tener el formato adecuado, y contener al menos las columnas con nu
 
 
 
-*****
-Tours
-*****
+*******
+Eventos
+*******
 
 En el caso de los paquetes (excursiones y circuitos) QuoTravel crea automáticamente una entidad evento cuando se existen reservas para ese paquete.
 
