@@ -4,11 +4,11 @@ Operaciones
 
 Aquí veremos la parte de QuoTravel relacionada con la organización de los servicios y el envío de los mismos a los proveedores.
 
-Hay servicios que no hay que organizar, sino que simplemente los enviamos a los proveedores tal cual, mientras que hay tipos de servicio que sí que queremos organizar anmtes de mandarlos al proveedor.
+Hay servicios que no hay que organizar, sino que simplemente los enviamos a los proveedores tal cual, mientras que hay tipos de servicio que sí que queremos organizar antes de mandarlos al proveedor.
 
 Por ejemplo, un servicio de estancia siempre lo mandaremos tal cual al proveedor mientra que los servicios de traslado, dependiendo del tipo y de nuestra manera de trabajar, querremos organizarlo nosotros antes de mandarlo al transportista.
 
-En el caso de los paquetes igual decidimos no realizar el servicio porque no llegamos a una rentabilidad mínima, y lo reenviaremos a un pool o cancelaremos el servicio.
+En el caso de las excursiones / circuitos igual decidimos no realizar el servicio porque no llegamos a una rentabilidad mínima, y lo reenviaremos a un pool o cancelaremos el servicio.
 
 
 ***************
@@ -23,7 +23,7 @@ Para entender la parte de operaciones es necesario entender un poco el modelo de
   Reserva --> Servicio --> Pedido compra --> Tarea
                  |
                  v
-                Tour
+                Evento
 
 
 La reserva es una solicitud que nos hace el cliente. Puede ser por ejemplo una petición de traslado de entrada y salida, o una estancia con traslado, o un ticket de una excursión.
@@ -32,9 +32,9 @@ Una reserva puede generar varios servicios.
 
 El servicio es la unidad básica de la parte operativa de QuoTravel. Es un servicio individual que debemos proporcionar y que normalmente pediremos a un proveedor.
 
-Desde el servicio podemos llegar al tour con el que está relacionado, lo que nos permite saber que precio debemos aplicar.
+Desde el servicio podemos llegar al evento con el que está relacionado, lo que nos permite saber que precio debemos aplicar.
 
-El pedido de compra es la petición de servicio que hacemos a un proveedor. Puede ser una petición de un servicio concreto, o puede por ejemplo ser un bus que incluye varios servicios de traslado.
+El pedido de compra es la petición de servicio que hacemos a un proveedor. El pedido a un proveedor nos sirve para saber a quien compramos el servicio.
 
 Lo importante aquí es que el nº que identifica el pedido de compra es la referencia que esperamos del proveedor en sus facturas, y que luego utilizaremos para validar la factura del proveedor.
 
@@ -47,7 +47,7 @@ Servicio
 
 Un servicio es la unidad mínima de gestión para operaciones.
 
-No para cada tipo de reserva existe un tipo de servicio, sino que en ocasiones una reserva se resuelve con otros tipos de servicio (por ejemplo un paquete).
+No para cada tipo de reserva existe un tipo de servicio, sino que en ocasiones una reserva se resuelve con otros tipos de servicio (por ejemplo una excursión).
 
 No editamos servicios directamente, sino que eso lo hacemos desde las reservas.
 
@@ -57,11 +57,11 @@ Para cada servicio podemos indicar:
 Reserva
   Reserva que ha originado este servicio
 
+Evento
+  Evento con el que está asiciado, si es el caso
+
 Fechas
   Fecha de inicio y de final del servicio
-
-Titular
-  Titular del servicio
 
 Validación
   Estado y mensaje
@@ -70,7 +70,10 @@ Cancelado
   Si el servicio ha sido cancelado
 
 No show
-  Si el cliente no se ha presentado. Este campo tiene especial relevancia para los traslados de llegada, ya que puede llevar a no hacer el servicio de salida
+ Si el cliente no se ha presentado. Este campo tiene especial relevancia para los traslados de llegada, ya que puede llevar a no hacer el servicio de salida
+
+Bloqueado
+  Si no queremos que este servicio se vea actualizado por los procesos de importación
 
 Retenido
   Si no queremos enviar el servicio al proveedor
@@ -78,11 +81,14 @@ Retenido
 Oficina
   Oficina responsable del servicio
 
-Comentarios cliente
-  Observaciones del cliente
+Peticiones especiales
+  Observaciones del cliente (lo arrastramos de la reserva)
 
 Comentarios operaciones
   Observaciones que pone el departamento de operaciones. Van al proveedor
+
+Comentarios para el proveedor
+  Comentarios que queremos que aparezcan en el envío de este servicio al proveedor
 
 Comentarios privados
   Comentarios que no van a ningún lado. Solo para registro
@@ -104,7 +110,23 @@ Precio
   Compra valorada
   Total coste
 
-Líneas de cargo
+Proveedor preferido
+  En caso de que queramos que este servicio se envíe a un proveedor concreto, aunque no sea la mejor opción
+
+Ya comprado
+  Si ya hemos enviado este servicio al proveedor fuera del sistema
+
+Pedio de compra
+  Pedido de compra asociado a este servicio
+
+Coste sobreescrito
+  En caso de que queramos indicar el coste de este servicio manualmente, fuera de contrato
+
+Entrega
+  Fecha y hora en que este servicio ha sido entregado
+
+Comentarios para la entrega
+  Aparecen por ejemplo en el acceso para gestión de llegadas en el aeropuerto
 
 
 Compra
@@ -146,14 +168,20 @@ Pedido de compra
 
 Los servicios que pedimos a un proveedor se materializan en pedidos de compra.
 
-Un pedido de compra puede incluir varios servicios.
+Un pedido de compra incluye únicamente un servicio.
 
 En ocasiones puede tener un significado extra. Es el caso de un traslado en el que el pedido está asociado a un autocar. En este caso, el pedido tiene campos extra para indicar los letreros y tiene un tratamiento especial desde la parte de operativa de traslados, como veremos más adelante.
 
 Para cada pedido tenemos los siguientes campos:
 
+Referencia
+  En caso de que queramos indicar una referencia en este pedido
+
 Auditoría
   Quien y cuando ha creado esta tarea, y quien y cuando la ha modificado por última vez
+
+Tipo de servicio
+  Puede ser hotel, traslado, genérico, texto libre, excursión o circuito
 
 Oficina
   Oficina que ha realizado el pedido
@@ -167,8 +195,8 @@ Cancelado
 Comentarios
   Comentarios para el proveedor
 
-Servicios
-  Lista de servicios incluidos en este pedido
+Servicio
+  Servicio que ha generado este pedido
 
 Entrega
   Datos relacionados con la entrega y la respuesta del proveedor
@@ -199,8 +227,8 @@ Cargos
   Líneas de cargo (previsión) relacionados con este pedido
 
 
-Task
-====
+Tarea
+=====
 
 En QuoTravel todos los envíos quedan registrados como una tarea.
 
@@ -256,18 +284,18 @@ Contenido
   Contenido del email
 
 
+Evento
+======
+
+El evento es la materialización de un paquete (excursión o evento). Es una excursión / circuito concreto en un turno concreto en una fecha concreta.
+
+Para cada evento tenemos
+
 Tour
-====
-
-El tour es la materialización de un paquete (excursión o evento).
-
-Para cada tour tenemos
-
-Paquete
-  Paquete al que hace referencia este tour
+  Excursión o circuito al que hace referencia este evento
 
 Fecha
-  Fecha del tour
+  Fecha del evento
 
 Turno
   Turno en el caso de que el paquete sea una excursión
@@ -295,6 +323,9 @@ Rentabilidad
 
 Comentarios
   Comentarios internos
+
+Plazas
+  Plazas disponibles, contratadas y libres
 
 
 ***********************************
@@ -450,11 +481,11 @@ El excel debe tener el formato adecuado, y contener al menos las columnas con nu
 Tours
 *****
 
-En el caso de los paquetes (excursiones y circuitos) QuoTravel crea automáticamente una entidad Tour cuando se existen reservas para ese paquete.
+En el caso de los paquetes (excursiones y circuitos) QuoTravel crea automáticamente una entidad evento cuando se existen reservas para ese paquete.
 
-Existe un listado de Tours con filtros por fecha, tipo de paquete, paquete, cliente, etc desde el que podemos ver todos los tours que tenemos que gestionar.
+Existe un listado de eventos con filtros por fecha, tipo de paquete, paquete, cliente, etc desde el que podemos ver todos los tours que tenemos que gestionar.
 
-Para cada tour podemos pedir un listado de recogidas, un listado de entregas, el itinerario, el conjunto de vouchers necesarios, un informe previo a la realización del tour (que incluye todo lo anterior y una previsión de costes para saber el dinero que hay que entregar a la guía) y acceder a la liquidación del mismo (donde la guía justifica los costes reales del tour).
+Para cada evento podemos pedir un listado de recogidas, un listado de entregas, el itinerario, el conjunto de vouchers necesarios, un informe previo a la realización del tour (que incluye todo lo anterior y una previsión de costes para saber el dinero que hay que entregar a la guía) y acceder a la liquidación del mismo (donde la guía justifica los costes reales del tour).
 
 Desde el tour podemos ver también las diferentes compras (elementos del paquete) y enviarlas a los proveedores.
 
