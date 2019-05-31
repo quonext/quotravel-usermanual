@@ -252,25 +252,32 @@ Foto
   La foto del usuario
 Comentarios
   Comentarios de uso interno
-Actor
-  Aquí indicamos si es un usuario de una agencia o de un proveedor
-Oficina
-  Utilizaremos este campo si queremos que este usuario acceda solo a las reservas y producto de una oficina concreta.
-Permisos
-  En QuoTravel hay definidos diferentes permisos para controlar el acceso de los usuarios. Actualmente son:
 
-  Súper administrador
-    Este permiso otorga acceso a todo el sistema.
-  Booking
-    Este permiso permite al usuario gestionar reservas.
-  Administración
-    Este permiso da acceso al área financiera (facturación, cobros y pagos, etc).
-  Confirmación horarios
-    Este permiso otorga acceso a la pantalla para la confirmación de horarios de recogida de los clientes de traslado.
 
-  Los permisos son acumulativos. Podemos asignar varios de ellos al mismo usuario.
+A partir de aquí los campos dependen del tipo de usuario
 
-  Los permisos irán creciendo en función de las peticiones de los clientes de QuoTravel.
+Agencia
+  Si es un usuario de agencia
+
+Provedor
+  Si es un usuario de un proveedor
+
+Punto de venta
+  Si es un representante
+
+Comisionista
+  Si es un representante
+
+Agencia
+  Si es un representante
+
+Banco
+  Si es un representante
+
+Aeropuerto
+  Si es un usuario de aeropuerto
+
+
 
 
 Al grabar el nuevo usuario se manda un email de bienvenida a la dirección de email con su password. El sistema obligará al usuario a cambiar el password en su primer acceso.
