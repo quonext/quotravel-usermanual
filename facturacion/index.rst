@@ -1219,6 +1219,9 @@ Básicamente hay 2 operaciones relacionadas con el SII:
 - comprobar que están correctamente en al aeat
 
 
+
+
+
 Subida de facturas al SII
 =========================
 
@@ -1233,6 +1236,109 @@ Las facturas se quedarán con la confirmación del SII y podremos en cualquier m
 En el caso de que queramos automatizar el envío al SII seguramente podremos decidir la frecuencia.
 
 Para cada factura queda registrada tanto la petición que ha hecho al SII como la respuesta de la AEAT.
+
+
+
+******
+Rappel
+******
+
+En QuoTravel podemos indicar rappels (descuentos por volúmen de facturación) tanto para clientes como para proveedores.
+
+Los rappels los mantenemos en CRM --> Rebate
+
+El importe del rappel es un dato que no sabemos realmente hasta que no ha terminado el periodo que está indicado en el rappel, así que no podemos reflejarlo en la reserva más que a título informativo.
+
+A medida que los rappel se van liquidando las facturas van quedando asocidas a esa liquidación, de manera que no se puede incluir la misma factura en dos liquidaciones diferentes.
+
+
+La forma que que se materializa la liquidación del rappel varía de si es un rappel que damos a un cliente, o de si es un rappel que nos da un proveedor.
+
+En el caso del rappel que damos a un cliente, a medida que vayamos emitiendo facturas iremos incluyendo un descuento en la misma hasta haber alcazado el importe de la liquidación del rappel. En el rappel podemos indicar el máximo descuento en factura (tanto en forma de importe como en forma de porcentaje).
+
+En el caso del rappel que nos da un proveedor simplemente indicamos el descuento debido al rappel que figura en la factura, y esto irá rebajando el saldo de la liquidación del rappel.
+
+
+
+
+Nombre
+  Para identificar este rappel
+
+Base aplicación
+  Cada cuanto debemos liquidar este rappel.
+
+  Admite los siguientes valores
+
+  - Anualmente
+  - Semestralmente
+  - Trimestralmente
+  - Mensualmente
+  - Semanalmente
+
+Fecha de la próxima liquidación
+  Aquí indicamos la fecha de la próxima liquidación.
+
+  Cuando liquidamos esta fecha se actualiza automáticamente de acuerdo con la base de aplicación.
+
+Liquidación automática
+  Si lo marcamos entonces se generará una línea de cargo automática a medida que se vaya cumpliendo la base de aplicación, con lo que aparecerá como disponible para facturar.
+
+Comentarios
+  Comentarios internos
+
+Porcentaje
+  Si este rappel es un porcentaje lineal
+
+Líneas
+  Si este rappel no es un porcentaje lineal, entonces utilizamos este escalado
+
+  Desde importe
+    Desde que importe es aplicable este porcentaje
+  Hasta importe
+    Hasta que importe es aplicable este porcentaje
+  Porcentaje
+    Porcentaje a aplicar para este tramo de factración
+
+Descuento máximo en factura
+  Descuento máximo que harems en la facturas futuras para liquidar el rappel. Lo podemos expresar en forma de porcentaje o en forma de importe.
+
+
+Tanto para consular las liquidaciones anteriores como para liquidar el rappel manualmente tenemos que ir a Financial --> Liquidaciones.
+
+Si queremos crear una liquidación QuoTravel nos pedirá una fecha límite y mostrará un listado con los clientes y el importe a liquidar a la fecha que le hemos indicado, teniendo en cuenta el porcentaje y el escalado indicado en su rappel.
+
+Naturalmente si no hemos indicado ningún rappel para ese cliente no aparecerá ningún importe a liquidar.
+
+A partir de aquí simplemente marcaremos los clientes que queremos liquidar y generará las liquidaciones pertinentes.
+
+
+***********
+Retenciones
+===========
+
+En QuoTravel podemos indicar retenciones (importe a retener sobre facturas de proveedores).
+
+Para ello podemos definir retenciones y reglas para las mismas.
+
+Para el tipo de retención podemos indicar:
+
+Nombre
+  Nombre del tipo de retención
+
+
+Para las reglas de retenciones podemos indicar:
+
+Nombre
+  Nombre de las reglas de retenciones
+
+Tipo
+  Tipo de rentención
+
+Porcentaje
+  Porcentaje a retener sobre la factura
+
+
+En la parte de informes tenemos un informe que nos dice las retenciones aplicadas sobre las facturas de proveedores.
 
 
 **************

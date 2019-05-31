@@ -292,6 +292,8 @@ Si un usuario ha olvidado el pasword puede recuperarlo utilizando la opción *Pa
 
 El sistema le enviará entonces un email con una url para indicar un nuevo password.
 
+El link que recibe el usuario tiene fecha de caducidad. No es eterno.
+
 
 Modificar usuarios
 ==================

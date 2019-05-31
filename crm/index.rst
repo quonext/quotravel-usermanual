@@ -6,7 +6,7 @@ Negocio
 Introducción
 ************
 
-En esta área de QuoTravel encontramos lo relacionado con nuestros partners, que pueden ser agencias o proveedores.
+En esta área de QuoTravel encontramos lo relacionado con nuestros partners, que pueden ser agencias, proveedores o comisionistas.
 
 La parte relativa a facturación y pagos la encontraremos en el área financiera de QuoTravel.
 
@@ -39,13 +39,16 @@ Central
 
 Mercado
   Cada agencia está ligada a un mercado por defecto. El mercado se utiliza para segmentar el producto.
-  No obstante, veremos que a la hora de realizar una reserva podemos indicar cualquier mercado, para cualquier agencia.
+  No obstante, veremos que a la hora de realizar una reserva podemos indicar cualquier mercado, para cualquier agencia. Por esta razón podemos dejar este campo vacío.
 
 Moneda
   Para cada agencia debemos indicar con que moneda quiere las reservas. En el caso de que una agencia acepte trabajar con las divisas de compra dejaremos el campo en blanco.
 
 Agente financiero
   Aquí indicamos los datos de facturación de un cliente. Al separar la parte operativa de la parte de facturación de las agencias y proveedores nos permite tener una balanza de pagos, compartir los datos de facturación entre diferentes agencias, etc.
+
+Empresa
+  Una agencia pertenece a una empresa.
 
 Email
   Aquí indicamos el email de la agencia o proveedor. Lo utilizamos para mandarle llos vouchers y otras comunicaciones.
@@ -77,9 +80,16 @@ Handling fee
 Condiciones de cancelación
   Aquí indicamos las condiciones de cancelación que aplican a esta agencia.
 
-Integraciones de terceros
-  Aquí podemos indicar que integraciones de compra son accesibles para esta agencia.
-  Si no indicamos ninguna todas las integraciones son accesibles, a no ser que hayamos indicado expresamente que no quiere productos de terceros, como hemos visto en el campo *Acepta prodcto de terceros*.
+Admite on request
+  Lo marcaremos si esta agencia quiere disponibilidad aunque sea on request.
+
+PVP permitido
+  Lo marcaremos si esta agencia repesta los PVP que le pasemos. Si no está marcada esta opción no le proporcionaremos precios que estén marcados como PVP obligatorio.
+
+Terceros permitidos
+  Lo marcaremos si esta agencia quiere producto de terceros (producto que obtengamos a travñes de una integración xml).
+
+
 
 ******************
 Grupos de agencias
@@ -88,6 +98,8 @@ Grupos de agencias
 Los grupos de agencias los utilizamos para segmentar el producto.
 
 Así, en los contratos podemos indicar si ese producto es visible para un grupo de agencias en lugar de ir agencia por agencia.
+
+Podemos indicar también aquí unas reglas de markup, que serán las que se utilizarán por defecto para todas las agencias del grupo.
 
 
 
@@ -136,14 +148,11 @@ Nombre
 Activa
   Para indicar si esta regla está activa o no debe utilizarse
 
-Partners
-  A que partners pueden aplicarse estas reglas
+Grupos de agencias
+  A que partners deben aplicarse estas reglas
 
-Mercados
-  A que mercados pueden aplicarse estas reglas
-
-Empresas del grupo
-  A que empresas del grupo pueden aplicarse estas reglas
+Agencias
+  A que agencias deben aplicarse estas reglas
 
 
 Cada conjunto de reglas de markups tiene líneas de markup, que podemos mantener en CRM --> Revenue --> Markup lines
@@ -160,12 +169,6 @@ Línea de producto
 Activa
   Si esta línea está activa
 
-Margen mínimo por reserva
-  Cuanto queremos ganar como mínimo para cada reserva
-
-Margen máximo por reserva
-  Cuanto nos basta ganar por reserva
-
 Porcentaje
   Entre el mínimo y el máximo el margen se calcula aplicando este porcentaje sobre el precio de compra
 
@@ -173,9 +176,9 @@ Porcentaje
 La lógica de aplicación de margenes es:
 
 - Si no existe un contrato de venta entonces intentamos conseguir el precio de venta aplicando un margen sobre el precio de compra
-- Las reglas de margen están indicadas en la agencia (partner)
+- Las reglas de margen están indicadas en la agencia o, si no, en el grupo de agencias
 - Buscamos una línea de margen activa para el producto que estamos vendiendo
-- Si existe esa línea aplicamos margen mínimo, máximo y pocentaje
+- Si existe esa línea aplicamos margen
 - Si no existe esa línea no podemos vender ese producto
 
 
@@ -275,6 +278,9 @@ Para cada límite de crédito debemos proporcionar
 Nombre
   Para identificar este límite de crédito
 
+Tipo
+  Puede ser sobre reservas o sobre facturación
+
 Límite
   Importe del riesgo
 
@@ -300,77 +306,6 @@ Emails
 Luego en el partner podemos indicar un límte de riesgo para producción (reservas no facturadas) y otro para facturación (facturas no pagadas).
 
 
-******
-Rappel
-******
-
-En QuoTravel podemos indicar rappels (descuentos por volúmen de facturación) tanto para clientes como para proveedores.
-
-Los rappels los mantenemos en CRM --> Rebate
-
-El importe del rappel es un dato que no sabemos realmente hasta que no ha terminado el periodo que está indicado en el rappel, así que no podemos reflejarlo en la reserva más que a título informativo.
-
-A medida que los rappel se van liquidando las facturas van quedando asocidas a esa liquidación, de manera que no se puede incluir la misma factura en dos liquidaciones diferentes.
-
-
-La forma que que se materializa la liquidación del rappel varía de si es un rappel que damos a un cliente, o de si es un rappel que nos da un proveedor.
-
-En el caso del rappel que damos a un cliente, a medida que vayamos emitiendo facturas iremos incluyendo un descuento en la misma hasta haber alcazado el importe de la liquidación del rappel. En el rappel podemos indicar el máximo descuento en factura (tanto en forma de importe como en forma de porcentaje).
-
-En el caso del rappel que nos da un proveedor simplemente indicamos el descuento debido al rappel que figura en la factura, y esto irá rebajando el saldo de la liquidación del rappel.
-
-
-
-
-Nombre
-  Para identificar este rappel
-
-Base aplicación
-  Cada cuanto debemos liquidar este rappel.
-
-  Admite los siguientes valores
-
-  - Anualmente
-  - Semestralmente
-  - Trimestralmente
-  - Mensualmente
-  - Semanalmente
-
-Fecha de la próxima liquidación
-  Aquí indicamos la fecha de la próxima liquidación.
-
-  Cuando liquidamos esta fecha se actualiza automáticamente de acuerdo con la base de aplicación.
-
-Liquidación automática
-  Si lo marcamos entonces se generará una línea de cargo automática a medida que se vaya cumpliendo la base de aplicación, con lo que aparecerá como disponible para facturar.
-
-Comentarios
-  Comentarios internos
-
-Porcentaje
-  Si este rappel es un porcentaje lineal
-
-Líneas
-  Si este rappel no es un porcentaje lineal, entonces utilizamos este escalado
-
-  Desde importe
-    Desde que importe es aplicable este porcentaje
-  Hasta importe
-    Hasta que importe es aplicable este porcentaje
-  Porcentaje
-    Porcentaje a aplicar para este tramo de factración
-
-Descuento máximo en factura
-  Descuento máximo que harems en la facturas futuras para liquidar el rappel. Lo podemos expresar en forma de porcentaje o en forma de importe.
-
-
-Tanto para consular las liquidaciones anteriores como para liquidar el rappel manualmente tenemos que ir a Financial --> Liquidaciones.
-
-Si queremos crear una liquidación QuoTravel nos pedirá una fecha límite y mostrará un listado con los clientes y el importe a liquidar a la fecha que le hemos indicado, teniendo en cuenta el porcentaje y el escalado indicado en su rappel.
-
-Naturalmente si no hemos indicado ningún rappel para ese cliente no aparecerá ningún importe a liquidar.
-
-A partir de aquí simplemente marcaremos los clientes que queremos liquidar y generará las liquidaciones pertinentes.
 
 
 *******************
