@@ -484,8 +484,8 @@ Líneas
 
   Para cada línea deberemos indicar
 
-  Partner
-    Para que agencia es aplicable este porcentaje.
+  Punto de venta
+    Para que punto de venta es aplicable este porcentaje.
 
     Si este campo está vacío, este porcentaje es aplicable a cualquier agencia
 
@@ -493,11 +493,6 @@ Líneas
     Para que producto es aplicable este porcentaje.
 
     Si este valor está vacío este porcentaje es aplicable a cualquier producto
-
-  Concepto de facturación
-    Concepto de facturación a utilizar cuando se genera la línea de cargo.
-
-    Recordar que el concepto de facturación marca la aplicación del IVA.
 
   Fecha inicio
     Esta comisión es aplicable a servicios con fecha de inicio mayor o igual a la fecha indicada
@@ -507,6 +502,9 @@ Líneas
 
   Porcentaje
     El porcentaje de la comisión
+
+  Base aplicación
+    Si el porcentaje debe aplicarse sobre el total de la venta o sobre el margen bruto de la misma.
 
 
 *******
@@ -519,12 +517,15 @@ El cupón puede representar un descuento porcentual, un descuento concreto o un 
 
 Para cada descuento que creemos podemos indicar:
 
-- destinatarios del descuento
-- cupo (cuantas veces se puede aplicar este descuento)
+- código del cupón
+- nombre del cupón
 - porcentaje
+- importe máximo descuento
 - importe descuento
-- importe final
+- divisa del descuento
 - si está activo
+- precio final de la reserva
+- cupo (cuantas veces se puede aplicar este descuento)
 - booking window
 
 
