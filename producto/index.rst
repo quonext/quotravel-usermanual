@@ -977,13 +977,25 @@ Zona
 Punto alternativo para shuttle
   Si lo indicamos, los traslados de tipo shuttle dejarán o recogerán a los clientes en este otro punto.
 
-Punto alternativa para no ejecutivos
+Punto alternativo para no ejecutivos
   Si está marcado, el punto alternativo funciona también para los traslados privados no executive.
 
-Intrucciones
-  Texto con instrucciones relativas a este punto de recogida.
+Intrucciones de llegada para shuttle
+  Texto con instrucciones relativas a este punto de recogida para reserva de shuttle.
 
   Aparece después en el voucher y en la web, antes de confirmar la reserva.
+
+Intrucciones de llegada para privados
+  Texto con instrucciones relativas a este punto de recogida para reserva de privados y executive.
+
+  Aparece después en el voucher y en la web, antes de confirmar la reserva.
+
+
+Intrucciones de salida
+  Texto con instrucciones relativas a este punto de recogida para salidas por este punto de traslado.
+
+  Aparece después en el voucher y en la web, antes de confirmar la reserva.
+
 
 Dirección
   Dirección en que está ubicado este punto de recogida.
@@ -1134,6 +1146,12 @@ Para cada línea de precio de un contrato de traslado debemos indicar:
 Contrato
   Contrato al que pertenece este precio
 
+Tarifa
+  Tarifa para la que se puede utilizar este precio
+
+Extra
+  Si es que esta línea de precio es aplicable a un extra
+
 Tipo de traslado
   Puede ser SHUTTLE, PRIVATE, LUXURY, INCOMING y ADAPTED
 
@@ -1143,14 +1161,11 @@ Origen
 Destino
   Punto donde dejamos a los clientes
 
-Tipo de operación
-  CHARTER o REGULAR
-
 Vehículo
-  El vehículo para el que esválido este precio
+  El vehículo para el que es válido este precio
 
 Precio por
-  Puede ser PAX, CHILD o SERVICE
+  Puede ser PAX o SERVICE
 
 Desde pax
   Referente al nº de pax que hay en este vehículo, para establecer un escalado dentro de un mismo vehículo.
@@ -1164,29 +1179,16 @@ Precio one way
 Precio ida y vuelta
   El precio indicado en la moneda del contrato
 
+Orden
+  Para indicar el orden de aplicación
 
-Precio suplemento
-=================
+Precio final
+  Si marcamos este campo esta es la última línea que vamos a mirar para calcular el precio.
 
-Para cada línea de precio de un suplemento de traslado debemos indicar:
 
-Contrato
-  Contrato al que pertenece este precio
 
-Suplemento
-  Suplemento para el que estamos indicando el precio
+El precio es el resultado de la aplicación de todas las líneas que coinciden con nuestra reserva, en el orden especificado.
 
-Fecha inicio
-  Precio aplicable desde la fecha indicada
-
-Fecha fin
-  Precio aplicable hasta la fecha indicada
-
-Precio por
-  Puede ser PAX, CHILD o SERVICE
-
-Precio
-  Precio
 
 
 ***********************
