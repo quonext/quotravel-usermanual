@@ -18,7 +18,7 @@ Modelo de datos
 
 Para entender bien la parte de facturación es necesario explicar un poco el modelo de datos.
 
-La facturación se basa en lo que llamamos cargos. Con las líneas de cargo indicamos tanto una deuda que el cliente ha contraído con nosotros como una deuda que hemos contraído nosotros con un proveedor.
+La facturación se basa en lo que llamamos líneas de cargo. Con las líneas de cargo indicamos tanto una deuda que el cliente ha contraído con nosotros como una deuda que hemos contraído nosotros con un proveedor.
 
 Luego esas líneas de cargo las asociamos con su factura correspondiente en el momento en que facturamos, o en el momento en que validamos una factura de un proveedor.
 
@@ -199,14 +199,14 @@ Para poder facturar algo a un cliente primero tenemos que introducir lo que quer
 
 Para emitir una factura el camino es:
 
-# introducir la deuda del cliente en forma de líneas de cargo
-# crear facturas a partir de las líneas de cargo
+- introducir la deuda del cliente en forma de líneas de cargo
+- crear facturas a partir de las líneas de cargo
 
-Normalmente las líneas de cargo se generan automáticamente desde las reservas, por la liquidación de una garantía, al liquidar el rappel de un proveedor, o al retroceder una factura, o al introducir un depósito, o al ir consumiendo un depósito.
+Normalmente las líneas de cargo se generan automáticamente desde las reservas, por la liquidación de una garantía, o al retroceder una factura.
 
 Análogamente tendremos que introducir líneas de cargo si queremos validar una factura de un proveedor.
 
-En el caso de las líneas de argo asociadas a compra / proveedor éstas normalmente se generan automáticamente desde un pedido de compra, los depósitos,
+En el caso de las líneas de argo asociadas a compra / proveedor éstas normalmente se generan automáticamente desde un pedido de compra,
 
 
 Para cada línea de cargo debemos indicar:
@@ -459,18 +459,6 @@ Tampoco se emite factura de aquellas reservas que se han cancelado y de las que 
 
 
 
-Factura de anticipos
---------------------
-
-Cuando un cliente nos hace un pago por anticipado automáticamente se genera un cargo por el importe del depósito.
-
-Ese cargo se puede facturar y generará una factura con su iva correspondiente.
-
-A medida que vayamos asociando facturas a ese depósito se generarán cargos en negativo que, al facturarlos, compensarán la factura del depósito para recuperar el iva
-
-Al final, solo quedarán las facturas correspondientes a los servicios prestados, cada uno con su iva y régimen correspondiente.
-
-
 Anulación de facturas
 ---------------------
 
@@ -690,25 +678,6 @@ En el caso de que haya facturas que hayan sido rechazadas por no coincidir el no
 Al corregir los datos se actualizará la ficha del partner, se corrigen las facturas y se vuelven a enviar al SII.
 
 
-Facturación multiempresa
-========================
-
-Como hemos dicho antes QuoTravel es un sistema multiempresa.
-
-Esto quiere decir que coexisten varias empresas en nuestra base de datos, cada una con su contabilidad.
-
-A un cliente podemos emitirle facturas desde cualquiera de nuestras empresas, y las facturas de nuestros proveedores las irán recibiendo las empresas pertinentes.
-
-Podemos configurar QuoTravel para que vaya generando facturas entre nuestras empresas para aquellos casos en que el que recibe la factura del proveedor es una empresa mientras que el que ha emitido la factura al cliente es una empresa diferente.
-
-El resultado final es que cada reserva tiene su venta y su coste.
-
-Podemos configurar la facturación entre empresas para que deje una parte del beneficio en una u otra empresa (porcentaje).
-
-El proceso que genera estas facturas se puede iniciar de manera manual o dejarlo programado para que se ejecute periódicamente.
-
-
-
 
 **************
 Cobros y pagos
@@ -916,23 +885,6 @@ Movimiento de caja
 
 Recordar que los pagos por TPV se pueden generar desde la reserva, desde la factura o directamente desde el mantenimiento de TPVS o de transacciones de TPV.
 
-Conciliación bancaria (importación extracto banco)
---------------------------------------------------
-
-En QuoTravel podemos importar extractos bancarios.
-
-Para introducir un extracto bancario deberemos ir a Fianncials --> Payments --> Accounts, seleccionar una cuenta y, desde ella, seleccionar la opción "Import banc extract".
-
-Nos aparecerá una ventana para pedirnos el fichero y la opción para importarlo.
-
-QuoTravel comproará entonces que el nº de cuenta coincide y, si es así, generará los movimientos pertinentes.
-
-Luego podemos revisar los movimientos e irlos asociendo con las reservas, facturas y otros movimientos, así como marcarlos para que sean ignorados si no están relacionados con nuestra actividad.
-
-Los movimiento arcdos como "ignore" no se contabilizan.
-
-Podemos configurar QuoTravel para que establezca la relación automáticamente (en base por ejemplo a encontrar el localizador de la reserva en el asunto), pero es un desarrollo ad hoc que queda fuera del estándar.
-
 
 Depósitos
 ---------
@@ -1087,8 +1039,9 @@ Hay que intentar ir siempre al régimen general aunque con cuidado de no pillarn
 
 En este capítulo vamos a ver como configuramos y como se tratan los impuestos (IVA) en QuoTravel.
 
-Régimen general y especial
-==========================
+
+Régimen general y régimen especial
+==================================
 
 Como hemos mencionado antes siempre intentaremos emitir nuestras facturas en el régimen general, ya que nos reulta más ventajoso.
 
@@ -1266,12 +1219,14 @@ En la parte de informes tenemos un informe que nos dice las retenciones aplicada
 Representantes
 **************
 
-En QuoTravel para cada venta podemos asignar un representante, que es básicamente una persona que se llevará una comisión sobre esa venta.
+En Quotravel la figura del representante tiene 2 vertientes: como punto de venta y como comisionista.
 
-En QuoTravel la gestión de representantes está muy evolucionada, como veremos ahora.
+Como punto de venta podemos consultar en cualquier momento las ventas que ha realizado y que tiene pendientes de liquidar (cash) y, en el momento que queremos, podemos liquidar las reservas que tiene pendientes de liquidar (o una selección de las mismas).
 
+Las liquidaciones se matan con uno o varios pagos.
 
->>>>>> terminar este capítulo
+Como comisionista podemos consultar en cualquier momento las comisiones pendientes de liquidar y, en el momento que lo deseemos, liquidar las comisiones pendientes.
+
 
 
 ***************
