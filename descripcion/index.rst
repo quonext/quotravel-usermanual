@@ -20,6 +20,8 @@ Además, es un sistema personalizable y abierto que nos permite extenderlo para 
    :align: center
    :figwidth: 100%
 
+   Esquema básico QuoTravel
+
 
 QuoTravel soporta la gestión completa de las reservas de hotel y traslado, excursiones y circuitos. El resto de servicios se pueden introducir como servicios genéricos, que como veremos más adelante son ampliamente parametrizables.
 
@@ -28,6 +30,8 @@ Está previsto ir añadiendo progresivamente la gestión completa de los servici
 .. figure:: /_static/esquema03.png
    :align: center
    :figwidth: 100%
+
+   Algunos de los componentes visibles de QuoTravel
 
 
 En QuoTravel podemos gestionar también servicios compuestos, como podrían ser una reserva hotel con cena en restaurante externo o un traslado IBZ - Formentera que se traduce operativamente en 3 servicios (traslado aeropuerto a puerto + barco + traslado puerto a hotel).
@@ -41,6 +45,9 @@ QuoTravel es un sistema multitenant de manera que varias empresas pueden compart
 .. figure:: /_static/esquema02.png
    :align: center
    :figwidth: 100%
+
+   Conectividades básicas QuoTravel
+
 
 En este esquema vemos un poco las posibilidades de conectividad que ofrece QuoTravel.
 
