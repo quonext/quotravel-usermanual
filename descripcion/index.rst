@@ -25,6 +25,11 @@ QuoTravel soporta la gestión completa de las reservas de hotel y traslado, excu
 
 Está previsto ir añadiendo progresivamente la gestión completa de los servicios de barco, vuelo, etc y la creación de paquetes dinámicos.
 
+.. figure:: /_static/esquema03.png
+   :align: center
+   :figwidth: 100%
+
+
 En QuoTravel podemos gestionar también servicios compuestos, como podrían ser una reserva hotel con cena en restaurante externo o un traslado IBZ - Formentera que se traduce operativamente en 3 servicios (traslado aeropuerto a puerto + barco + traslado puerto a hotel).
 
 
